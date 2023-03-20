@@ -1,0 +1,26 @@
+CREATE TABLE criaturas(
+  	nome VARCHAR(40) not null unique,
+  	tipo VARCHAR(20) not null,
+  	specie VARCHAR(20) NOT null,
+  	descritor VARCHAR(500),
+  	PRIMARY KEY (nome)
+  );
+
+CREATE TABLE items (
+	nome VARCHAR(40) not null UNIQUE,
+  	raridade int not null,
+  	efeito VARCHAR(100) not null,
+  	inv_max int not null,
+  	buy int not null,
+  	sell int not null,
+  	PRIMARY KEY (nome)
+  );
+
+CREATE TABLE personagens(
+  	nome VARCHAR(40) not null unique,
+  	nivel int not null,
+  	dinheiro int NOT null,
+  	pts_pesquisa int not null,
+  	PRIMARY KEY (nome)
+  );
+
