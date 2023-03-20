@@ -1,26 +1,31 @@
-CREATE TABLE criaturas(
-  	nome VARCHAR(40) not null unique,
-  	tipo VARCHAR(20) not null,
-  	specie VARCHAR(20) NOT null,
-  	descritor VARCHAR(500),
-  	PRIMARY KEY (nome)
-  );
-
-CREATE TABLE items (
-	nome VARCHAR(40) not null UNIQUE,
-  	raridade int not null,
-  	efeito VARCHAR(100) not null,
-  	inv_max int not null,
-  	buy int not null,
-  	sell int not null,
-  	PRIMARY KEY (nome)
-  );
-
 CREATE TABLE personagens(
   	nome VARCHAR(40) not null unique,
+  	almas int NOT null,
+  	classe varchar(40) not null,
+  	hp int not null,
+  	stamina int not null,
+  	equip_load int not null,
+  	item_discovery int not null,
+  	attunment_slot int not null,
+  	bleed_res int not null,
+  	poison_res int not null,
+  	curse_res int not null,
+  	poise int not null,
   	nivel int not null,
-  	dinheiro int NOT null,
-  	pts_pesquisa int not null,
+  	vit int not null,
+  	att int not null,
+  	endu int not null,
+  	str int not null,
+  	dex int not null,
+  	res int not null,
+  	int int not null,
+  	fth int not null,
+  	hum int not null,
   	PRIMARY KEY (nome)
   );
-
+  
+  CREATE TABLE items (
+  	nome varchar(40) not null UNIQUE,
+  	descricao varchar (10000) not null,
+  	PRIMARY key (nome)
+  );
