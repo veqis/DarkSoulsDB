@@ -1,7 +1,7 @@
 CREATE TABLE personagens(
   	nome VARCHAR(40) not null unique,
   	almas int NOT null,
-  	classe varchar(40) not null,
+  	classe varchar(40) check( classe = 'Warrior' or classe = 'Knight' or classe = 'Wanderer' or classe = 'Thief' or classe = 'Bandit' or classe = 'Hunter' or classe = 'Sorcerer' or classe = 'Pyromancer' or classe = 'Cleric' or classe = 'Deprived') not null,
   	hp int not null,
   	stamina int not null,
   	equip_load int not null,
