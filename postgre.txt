@@ -29,3 +29,11 @@ CREATE TABLE personagens(
   	descricao varchar (10000) not null,
   	PRIMARY key (nome)
   );
+
+CREATE TABLE equipa(
+  	nome_personagem VARCHAR(45) not null,
+  	nome_item VARCHAR(45) not NULL,
+  	slot VARCHAR(45) not null unique,
+  	FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
+  	FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
+  );
