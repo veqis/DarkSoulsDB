@@ -32,7 +32,7 @@ CREATE TABLE personagens(
 
 CREATE TABLE equipa(
   	nome_personagem VARCHAR(45) not null,
-  	nome_item VARCHAR(45) not NULL,
+  	nome_item VARCHAR(45) not NULL unique,
   	slot VARCHAR(45) not null unique,
   	FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
   	FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
