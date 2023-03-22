@@ -37,3 +37,14 @@ CREATE TABLE equipa(
   	FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
   	FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
   );
+
+CREATE TABLE spells (
+	nome_spell VARCHAR(45) not NULL UNIQUE,
+  	categoria VARCHAR (45) CHECK ( categoria = 'Sorceries' or categoria = 'Pyromancies' or categoria = 'Miracles') not NULL,
+  	usos int not NULL, 
+  	slots int not NULL,
+  	int_req int not NULL,
+  	fht_req int not NULL,
+  	tipo VARCHAR(45) not NULL,
+  	FOREIGN KEY (nome_spell) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
+);
