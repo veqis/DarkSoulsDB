@@ -12,7 +12,7 @@ values
 ('Magic Weapon', 'Enhances the right-hand weapon. Weapon must be standard, crystal, or raw. Some Dragon and Unique weapons can be enchanted too. Adds 0.8x your Magic Adjustment stat (NOT Intelligence) magic damage to your weapon.'),
 ('Great Magic Weapon', 'Enhances the right-hand weapon. Weapon must be standard, crystal, or raw. Some Dragon and Unique weapons can be enchanted too. Adds 1.1x your Magic Adjustment stat (NOT Intelligence) magic damage to your weapon.'),
 ('Crystal Magic Weapon', 'Enhances and crystallizes right-hand weapon. Weapon must be standard, crystal, or raw. Some Dragon and Unique weapons can be enchanted too. Adds 1.4x your Magic Adjustment stat (NOT Intelligence) as magic damage to your weapon.'),
-('Magic Shield', 'Reinforces the equipped shield or weapon able to block in the left hand with magic. Works on all types of shields (even unique or upgraded to any path) and on all weapons able to block while on the left hand (even unique or upgraded to any path). Halves stamina used on hit deflection (only on shields) and improves the weapon's or shield's magic resistance by 30% (by up to a maximum of 90%). Lasts 15 seconds, 5 casts.'),
+('Magic Shield', 'Reinforces the equipped shield or weapon able to block in the left hand with magic. Works on all types of shields (even unique or upgraded to any path) and on all weapons able to block while on the left hand (even unique or upgraded to any path). Halves stamina used on hit deflection (only on shields) and improves the weapons or shields magic resistance by 30% (by up to a maximum of 90%). Lasts 15 seconds, 5 casts.'),
 ('Strong Magic Shield', 'Reinforces the equipped shield or weapon able to block in the left hand with a stronger magic effect. Works on all types of shields (even unique or upgraded to any path) and on all weapons able to block while on the left hand (even unique or upgraded to any path). Reduces the stamina used to deflect a hit considerably (only on shields) and improves all the resistances of the shield or weapon enchanted to 100%. Lasts 15 seconds, 3 casts.'),
 ('Aural Decoy', 'Lures enemies away by creating a sound originating in the distance.'),
 ('Hush', 'Masks all noises of caster.'),
@@ -25,6 +25,24 @@ values
 ('Remedy', 'Removes poison/toxic/bleeding build up, and cures poison/toxic status.'),
 ('Resist Curse', 'Removes curse build up.'),
 ('Dark Orb', 'After a brief charge, fires a large shot at your target.'),
-('Dark Bead', 'Fires a large amount of small dark orbs that fan outwards�very fast cast time. Excellent against large bosses.'),
+('Dark Bead', 'Fires a large amount of small dark orbs that fan outwards very fast cast time. Excellent against large bosses.'),
 ('Dark Fog', 'Creates a fog that inflicts poison. The fog is created at the location of the locked target.'),
 ('Pursuers', 'Slow moving dark soul mass, fires and homes in on target when in range. Slower moving than homing soul mass but has much better homing capabilities.');
+
+insert into items (nome, descricao)
+values
+('Titanite Shard', 'Reinforce standard weapons to +5 Reinforce standard armor to +3'),
+('Large Titanite Shard', 'Reinforce standard weapons to +10, Raw weapons to +5 Reinforce standard armor to +6'),
+('Titanite Chunk', 'Reinforce standard weapons to +14, Crystal and Lightning weapons to +4,�Reinforce standard armor to +9'),
+('Titanite Slab', 'Reinforce standard weapons to +15, Crystal and Lightning weapons to +5, Reinforce standard armor to +10'),
+('Green Titanite Shard', 'Reinforce Magic, Divine, and Fire weapons to +5'),
+('Blue Titanite Chunk', 'Reinforce Magic weapons to +9, Enchanted weapons to +4'),
+('Blue Titanite Slab', 'Reinforce Magic weapons to +10, Enchanted weapons to +5'),
+('Red Titanite Chunk', 'Reinforce Fire weapons to +9, Chaos weapons to +4'),
+('Red Titanite Slab', 'Reinforce Fire weapons to +10, Chaos weapons to +5'),
+('White Titanite Chunk', 'Reinforce Divine weapons to +9, Occult weapons to +4'),
+('White Titanite Slab', 'Reinforce Divine weapons to +10, Occult weapons to +5'),
+('Twinkling Titanite', 'Reinforce non-infusable weapons and rare armor to +5'),
+('Demon Titanite', 'Reinforce weapons made with Boss Souls to +5'),
+('Dragon Scale', 'Reinforce Dragon weapons to +5');
+
