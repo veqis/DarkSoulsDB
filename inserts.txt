@@ -46,3 +46,33 @@ values
 ('Demon Titanite', 'Reinforce weapons made with Boss Souls to +5'),
 ('Dragon Scale', 'Reinforce Dragon weapons to +5');
 
+insert into spells (nome_spell, usos, slots, int_req, tipo)
+values 
+('Soul Arrow', '30', '1', '10', 'Ranged Magic Attack'),
+('Great Soul Arrow', '20', '1', '14', 'Ranged Magic Attack'),
+('Heavy Soul Arrow', '12', '1', '12', 'Ranged Magic Attack'),
+('Great Heavy Soul Arrow', '8', '1', '16', 'Ranged Magic Attack'),
+('Homing Soulmass', '10', '1', '18', 'Ranged Magic Attack'),
+('Homing Crystal Soulmass', '10', '1', '24', 'Ranged Magic Attack'),
+('Soul Spear', '4', '1', '36', 'Ranged Magic Attack'),
+('Crystal Soul Spear', '4', '1', '44', 'Ranged Magic Attack'),
+('White Dragon Breath', '20', '1', '50', 'Ranged Magic Attack'),
+('Magic Weapon', '5', '1', '10', 'Weapon Buff'),
+('Great Magic Weapon', '3', '1', '15', 'Weapon Buff'),
+('Crystal Magic Weapon', '3', '1', '25', 'Weapon Buff'),
+('Magic Shield', '5', '1', '10', 'Support Defense (Buff)'),
+('Strong Magic Shield', '3', '1', '15', 'Support Defense (Buff)'),
+('Aural Decoy', '20', '1', '10', 'Support Defense'),
+('Hush', '6', '1', '15', 'Support Defense (Buff)'),
+('Fall Control', '10', '1', '15', 'Support Defense (Buff)'),
+('Hidden Weapon', '3', '1', '14', 'Support (Weapon Buff)'),
+('Hidden Body', '3', '1', '14', 'Support (Buff)'),
+('Repair', '1', '1', '14', 'Support'),
+('Cast Light', '3', '1', '14', 'Support'),
+('Chameleon', '11', '1', '14', 'Support'),
+('Remedy', '4', '1', '16', 'Support'),
+('Resist Curse', '4', '1', '16', 'Support'),
+('Dark Orb', '12', '1', '16', 'Ranged Magic Attack'),
+('Dark Bead', '6', '1', '16', 'Ranged Magic Attack'),
+('Dark Fog', '2', '1', '18', 'AoE Ranged Sorcery'),
+('Pursuers', '3', '2', '32', 'Ranged Magic Attack');
