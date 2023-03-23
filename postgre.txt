@@ -48,3 +48,32 @@ CREATE TABLE spells (
   	tipo VARCHAR(45) not NULL,
   	FOREIGN KEY (nome_spell) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
 );
+
+create table equipamentos (
+  	nome_equipamento VARCHAR(45) not NULL UNIQUE,
+  	categoria VARCHAR(45) not NULL ,
+  	tipo_ataque VARCHAR(45) NOT NULL,
+  	encantavel BOOLEAN not NULL,
+  	special VARCHAR(45) not NULL,
+  	fis INT not NULL,
+  	magi INT not NULL,
+  	fire INT not NULL,
+  	eletro INT not NULL,
+  	crit INT NOt NULL,
+   	fis_res INT not NULL,
+  	magi_res INT not NULL,
+  	fire_res INT not NULL,
+  	eletro_res INT not NULL,
+  	stabilidade INT not NULL,
+  	durabilidade INT not NULL,
+  	peso INT not NULL, 
+  	str_bonus VARCHAR(1) not NULL,
+  	dex_bonus VARCHAR(1) not NULL,
+  	int_bonus VARCHAR(1) not NULL,
+  	fht_bonus VARCHAR(1) not NULL,
+  	str_req VARCHAR(1) not NULL,
+  	dex_req VARCHAR(1) not NULL,
+  	int_req VARCHAR(1) not NULL,
+  	fht_req VARCHAR(1) not NULL,  
+  	FOREIGN key (nome_equipamento) REFERENCES items (nome)
+  );
