@@ -11,7 +11,7 @@ while True:
     soup = BeautifulSoup(site.text, "html.parser")
 
     def gravar(a, b):
-        f = open("tst.txt", "a")
+        f = open("itens+descrição.txt", "a")
         f.writelines("('{}', '{}'),\n".format(
             a, b))
         f.close()
