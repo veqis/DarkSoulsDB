@@ -30,7 +30,8 @@ while True:
             continue
         else:
             texto = desc.find("i").text
-            gravar(nome,texto)
+            gravar(nome.replace("'","''").replace("(Dark Souls)",""),texto.replace("'","''").replace("[1]",""))
+            
 
             
 """
