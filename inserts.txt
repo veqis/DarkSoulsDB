@@ -85,7 +85,7 @@ values
 ('White Titanite Slab', 'Reinforce Divine weapons to +10, Occult weapons to +5'),
 ('Twinkling Titanite', 'Reinforce non-infusable weapons and rare armor to +5'),
 ('Demon Titanite', 'Reinforce weapons made with Boss Souls to +5'),
-('Dragon Scale', 'Reinforce Dragon weapons to +5');
+('Dragon Scale', 'Reinforce Dragon weapons to +5'),
 ('Abyss Greatsword', 'This greatsword belonged to Lord Gwyn''s Knight Artorias, who fell to the abyss.'),
 ('Astora''s Straight Sword', 'Straight sword of an unknown knight, likely one of Astora''s superiors.'),
 ('Avelyn', 'Repeating crossbow cherished by the weapon craftsman Eidas. Its elaborate design makes it closer to a work of art than a weapon. Intricate mechanism makes heavy damage possible through triple-shot firing of bolts, but in fact each bolt inflicts less damage.'),
