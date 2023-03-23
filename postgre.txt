@@ -53,8 +53,6 @@ create table equipamentos (
   	nome_equipamento VARCHAR(45) not NULL UNIQUE,
   	categoria VARCHAR(45) not NULL ,
   	tipo_ataque VARCHAR(45) NOT NULL,
-  	encantavel BOOLEAN not NULL,
-  	special VARCHAR(45) not NULL,
   	fis INT not NULL,
   	magi INT not NULL,
   	fire INT not NULL,
