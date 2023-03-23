@@ -45,10 +45,6 @@ https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Curved_Greatswords
 https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Curved_Swords
 https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Daggers
 https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Axes
-https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Boss_Soul_Weapons
-https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Demon_Weapons
-https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Tail_Weapons
-https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Dragon_Weapons
 https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Shields
 https://darksouls.fandom.com/wiki/Category:Dark_Souls:_Spears
 """
