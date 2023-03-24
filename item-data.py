@@ -11,10 +11,16 @@ while True:
     soup = BeautifulSoup(site.text, "html.parser")
 
     def gravar(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,i17,i18,i19,i20,i21,i22,i23):
+        i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17, i18, i19, i20, i21, i22, i23 = map(clean, [i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17, i18, i19, i20, i21, i22, i23])
         f = open("iten-data.txt", "a")
         f.writelines("('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}'),\n".format(
             i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,i17,i18,i19,i20,i21,i22,i23))
         f.close()
+        
+    def clean(text):
+        cleaned = text.replace("'", "''").replace("(Dark Souls)", "").replace("[1]", "")
+        return cleaned
+
                            
     for i in soup.find_all('a', attrs={"class": "category-page__member-link"}):
         link = i.get('href')
@@ -82,4 +88,4 @@ while True:
                            counter2 +=1
                            pass    
                        
-                   gravar(nome,tipo_arm,tipo_atq,d_fis,d_mag,d_fog,d_ele,d_crt,r_fis,r_mag,r_fog,r_ele,stabil,durab,wei,b_str,b_dex,b_int,b_fht,r_str,r_dex,r_int,r_fht)     
+                   gravar(clean(nome),tipo_arm,tipo_atq,d_fis,d_mag,d_fog,d_ele,d_crt,r_fis,r_mag,r_fog,r_ele,stabil,durab,wei,b_str,b_dex,b_int,b_fht,r_str,r_dex,r_int,r_fht)     
