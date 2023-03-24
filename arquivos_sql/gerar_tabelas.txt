@@ -93,3 +93,18 @@ CREATE TABLE armaduras (
   	poise DECIMAL not NULL,
   	FOREIGN key (nome_armadura) REFERENCES items (nome)
   );
+
+CREATE table inimigo (
+  	nome VARCHAR(45) NOT NULL UNIQUE,
+  	classe VARCHAR(45) NOT NULL,
+  	r_fis VARCHAR(8) not NULL,
+  	r_impacto VARCHAR(8) not NULL,
+  	r_corte VARCHAR(8) not NULL,
+  	r_perfurar VARCHAR(8) not NULL,
+  	r_magic VARCHAR(8) Not NULL,
+  	r_fogo VARCHAR(8) NOT NULL,
+  	r_electro VARCHAR(8) not NULL,
+  	r_poison VARCHAR(1) not NULL,
+  	r_toxic VARCHAR(1) not NULL,
+  	r_bleed VARCHAR(1) not NULL,
+  );
