@@ -75,3 +75,21 @@ create table equipamentos (
   	fht_req INT not NULL,  
   	FOREIGN key (nome_equipamento) REFERENCES items (nome)
   );
+
+CREATE TABLE armaduras (
+  	nome_armadura VARCHAR(45) not NULL unique,
+  	r_fis INT not NULL,
+  	r_impacto INT not NULL,
+  	r_corte INT not NULL,
+  	r_perfurar INT not NULL,
+ 	r_magic INT not NULL,
+  	r_fogo INT not NULL,
+  	r_electro INT not NULL,
+  	r_bleed DECIMAL not NULL,
+  	r_poison DECIMAL not NULL,
+  	r_curse DECIMAL not NULL,
+  	durabilidade INT not NULL,
+  	peso DECIMAL not NULL,
+  	poise DECIMAL not NULL,
+  	FOREIGN key (nome_armadura) REFERENCES items (nome)
+  );
