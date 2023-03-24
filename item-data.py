@@ -16,6 +16,7 @@ while True:
         f.writelines("('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}'),\n".format(
             i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,i17,i18,i19,i20,i21,i22,i23))
         f.close()
+
         
     def clean(text):
         cleaned = text.replace("'", "''").replace("(Dark Souls)", "").replace("[1]", "")
@@ -33,6 +34,10 @@ while True:
         
         site2 = requests.get(endereco)
         soup2 = BeautifulSoup(site2.text, "html.parser")
+        
+        desc = soup2.find('div',attrs={"class":"mainbg"})
+        if desc is None:
+            continue
         
         nome = soup2.find(id="firstHeading").text.strip()
         
@@ -88,4 +93,7 @@ while True:
                            counter2 +=1
                            pass    
                        
-                   gravar(clean(nome),tipo_arm,tipo_atq,d_fis,d_mag,d_fog,d_ele,d_crt,r_fis,r_mag,r_fog,r_ele,stabil,durab,wei,b_str,b_dex,b_int,b_fht,r_str,r_dex,r_int,r_fht)     
+                   gravar(nome,tipo_arm,tipo_atq,d_fis,d_mag,d_fog,d_ele,d_crt,r_fis,r_mag,r_fog,r_ele,stabil,durab,wei,b_str,b_dex,b_int,b_fht,r_str,r_dex,r_int,r_fht)     
+                
+                #INSERT INTO equipamentos (nome_equipamento,categoria,tipo_ataque,fis,magi,fire,eletro,crit,fis_res,magi_res,fire_res,eletro_res,stabilidade,durabilidade,peso,str_bonus,dex_bonus,int_bonus,fht_bonus,str_req,dex_req,int_req,fht_req) 
+                #VALUES
