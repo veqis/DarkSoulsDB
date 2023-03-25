@@ -174,3 +174,11 @@ CREATE TABLE boss_drops (
   FOREIGN KEY (nome_boss) REFERENCES boss (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE mapa_tem_item (
+  nome_item VARCHAR(45) not NULL,
+  nome_mapa VARCHAR(45) NOt NULL,
+  lugar VARCHAR (45) not NULL,
+  FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE,
+  FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) on DELETE CASCADE on UPDATE CASCADE
+  );
