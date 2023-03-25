@@ -135,3 +135,18 @@ create table npcs (
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
   FOREIGN key (nome_mapa) REFERENCES mapas (nome)
   );
+
+CREATE TABLE npc_vende_item (
+  nome_npc VARCHAR(45) not NULL,
+  nome_item VARCHAR(45) not NULL,
+  preco VARCHAR(45) NOt NULL,
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
+  FOREIGN key (nome_item) REFERENCES items (nome)
+  );
+  
+CREATE TABLE npc_tem_item (
+  nome_npc VARCHAR(45) not NULL,
+  nome_item VARCHAR(45) not NULL,
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
+  FOREIGN key (nome_item) REFERENCES items (nome)
+  );
