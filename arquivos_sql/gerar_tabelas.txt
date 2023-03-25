@@ -123,3 +123,15 @@ create table mapas (
   	nome VARCHAR(45) not NULL unique,
   	PRIMARY key (nome)
   );
+
+create table npcs (
+  	nome VARCHAR(45) not NULL unique,
+  	PRIMARY key (nome)
+  );
+  
+ CREATE TABLE npc_on_mapa (
+  nome_npc VARCHAR(45) not NULL,
+  nome_mapa VARCHAR(45) not NULL,
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
+  FOREIGN key (nome_mapa) REFERENCES mapas (nome)
+  );
