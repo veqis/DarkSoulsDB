@@ -107,4 +107,14 @@ CREATE table inimigo (
   	r_poison VARCHAR(1) not NULL,
   	r_toxic VARCHAR(1) not NULL,
   	r_bleed VARCHAR(1) not NULL,
+  	PRIMARY key (nome)
+  );
+
+create table boss (
+  	nome VARCHAR(45) not NULL unique,
+  	HP INT not NULL,
+  	HP_NG INT not NULL,
+  	souls INT not NULL,
+  	souls_NG INT not NULL,
+  	PRIMARY key (nome)
   );
