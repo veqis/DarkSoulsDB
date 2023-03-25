@@ -94,7 +94,7 @@ CREATE TABLE armaduras (
   	FOREIGN key (nome_armadura) REFERENCES items (nome)
   );
 
-CREATE table inimigo (
+CREATE table inimigos (
   	nome VARCHAR(45) NOT NULL UNIQUE,
   	classe VARCHAR(45) NOT NULL,
   	r_fis VARCHAR(8) not NULL,
@@ -150,3 +150,27 @@ CREATE TABLE npc_tem_item (
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
   FOREIGN key (nome_item) REFERENCES items (nome)
   );
+
+CREATE TABLE npc_drops (
+  nome_npc VARCHAR(45) not null,
+  nome_item VARCHAR(45) not null,
+  chance DECIMAL(4,2) not null,
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE inimigo_drops (
+  nome_inimigo VARCHAR(45) not null,
+  nome_item VARCHAR(45) not null,
+  chance DECIMAL(4,2) not null,
+  FOREIGN KEY (nome_inimigo) REFERENCES inimigos (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE boss_drops (
+  nome_boss VARCHAR(45) not null,
+  nome_item VARCHAR(45) not null,
+  chance DECIMAL(4,2) not null,
+  FOREIGN KEY (nome_boss) REFERENCES boss (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
+);
