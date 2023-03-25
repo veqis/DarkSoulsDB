@@ -118,3 +118,8 @@ create table boss (
   	souls_NG INT not NULL,
   	PRIMARY key (nome)
   );
+
+create table mapas (
+  	nome VARCHAR(45) not NULL unique,
+  	PRIMARY key (nome)
+  );
