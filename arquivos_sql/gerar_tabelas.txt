@@ -183,3 +183,15 @@ CREATE TABLE mapa_tem_item (
   FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE spawna(
+ 	nome_inimigo VARCHAR(45) not NULL,
+  	nome_mapa VARCHAR(45) not NULL,
+  	HP INT not NULL,
+  	HP_NG INT not NULL,
+  	almas INT not NULL,
+  	almas_NG INT not NULL,
+  	respawn BOOLEAN not NULL,
+  	FOREIGN key (nome_inimigo) REFERENCES inimigos (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  	FOREIGN key (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
+); 
