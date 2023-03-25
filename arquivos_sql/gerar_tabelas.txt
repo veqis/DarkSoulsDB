@@ -1,184 +1,185 @@
 CREATE TABLE personagens(
-  	nome VARCHAR(40) not null unique,
-  	almas int NOT null,
-  	classe varchar(40) check( classe = 'Warrior' or classe = 'Knight' or classe = 'Wanderer' or classe = 'Thief' or classe = 'Bandit' or classe = 'Hunter' or classe = 'Sorcerer' or classe = 'Pyromancer' or classe = 'Cleric' or classe = 'Deprived') not null,
-  	hp int not null,
-  	stamina int not null,
-  	equip_load int not null,
-  	item_discovery int not null,
-  	attunment_slot int not null,
-  	bleed_res int not null,
-  	poison_res int not null,
-  	curse_res int not null,
-  	poise int not null,
-  	nivel int not null,
-  	vit int not null,
-  	att int not null,
-  	endu int not null,
-  	str int not null,
-  	dex int not null,
-  	res int not null,
-  	int int not null,
-  	fth int not null,
-  	hum int not null,
+  	nome VARCHAR(40) NOT NULL unique,
+  	almas int NOT NULL,
+  	classe varchar(40) check( classe = 'Warrior' or classe = 'Knight' or classe = 'Wanderer' or classe = 'Thief' or classe = 'Bandit' or classe = 'Hunter' or classe = 'Sorcerer' or classe = 'Pyromancer' or classe = 'Cleric' or classe = 'Deprived') NOT NULL,
+  	hp int NOT NULL,
+  	stamina int NOT NULL,
+  	equip_load int NOT NULL,
+  	item_discovery int NOT NULL,
+  	attunment_slot int NOT NULL,
+  	bleed_res int NOT NULL,
+  	poison_res int NOT NULL,
+  	curse_res int NOT NULL,
+  	poise int NOT NULL,
+  	nivel int NOT NULL,
+  	vit int NOT NULL,
+  	att int NOT NULL,
+  	endu int NOT NULL,
+  	str int NOT NULL,
+  	dex int NOT NULL,
+  	res int NOT NULL,
+  	int int NOT NULL,
+  	fth int NOT NULL,
+  	hum int NOT NULL,
   	PRIMARY KEY (nome)
-  );
+);
   
   CREATE TABLE items (
-  	nome varchar(40) not null UNIQUE,
-  	descricao varchar (10000) not null,
+  	nome varchar(40) NOT NULL UNIQUE,
+  	descricao varchar (10000) NOT NULL,
   	PRIMARY key (nome)
-  );
+);
 
-CREATE TABLE equipa(
-  	nome_personagem VARCHAR(45) not null,
-  	nome_item VARCHAR(45) not NULL unique,
-  	slot VARCHAR(45) not null unique,
-  	FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
-  	FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
-  );
+CREATE TABLE inimigos (
+  	nome VARCHAR(45) NOT NULL UNIQUE,
+  	classe VARCHAR(45) NOT NULL,
+  	r_fis VARCHAR(8) NOT NULL,
+  	r_impacto VARCHAR(8) NOT NULL,
+  	r_corte VARCHAR(8) NOT NULL,
+  	r_perfurar VARCHAR(8) NOT NULL,
+  	r_magic VARCHAR(8) NOT NULL,
+  	r_fogo VARCHAR(8) NOT NULL,
+  	r_electro VARCHAR(8) NOT NULL,
+  	r_poison VARCHAR(1) NOT NULL,
+  	r_toxic VARCHAR(1) NOT NULL,
+  	r_bleed VARCHAR(1) NOT NULL,
+  	PRIMARY key (nome)
+);
+
+CREATE TABLE boss (
+  	nome VARCHAR(45) NOT NULL unique,
+  	HP INT NOT NULL,
+  	HP_NG INT NOT NULL,
+  	souls INT NOT NULL,
+  	souls_NG INT NOT NULL,
+  	PRIMARY key (nome)
+);
+
+CREATE TABLE mapas (
+  	nome VARCHAR(45) NOT NULL unique,
+  	PRIMARY key (nome)
+);
+
+CREATE TABLE npcs (
+  	nome VARCHAR(45) NOT NULL unique,
+  	PRIMARY key (nome)
+);
 
 CREATE TABLE spells (
-	nome_spell VARCHAR(45) not NULL UNIQUE,
-  	categoria VARCHAR (45) CHECK ( categoria = 'Sorceries' or categoria = 'Pyromancies' or categoria = 'Miracles') not NULL,
-  	usos int not NULL, 
-  	slots int not NULL,
-  	int_req int not NULL,
-  	fht_req int not NULL,
-  	tipo VARCHAR(45) not NULL,
+	nome_spell VARCHAR(45) NOT NULL UNIQUE,
+  	categoria VARCHAR (45) CHECK ( categoria = 'Sorceries' or categoria = 'Pyromancies' or categoria = 'Miracles') NOT NULL,
+  	usos int NOT NULL, 
+  	slots int NOT NULL,
+  	int_req int NOT NULL,
+  	fht_req int NOT NULL,
+  	tipo VARCHAR(45) NOT NULL,
   	FOREIGN KEY (nome_spell) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
 );
 
-create table equipamentos (
-  	nome_equipamento VARCHAR(45) not NULL UNIQUE,
-  	categoria VARCHAR(45) not NULL ,
+CREATE TABLE equipamentos (
+  	nome_equipamento VARCHAR(45) NOT NULL UNIQUE,
+  	categoria VARCHAR(45) NOT NULL ,
   	tipo_ataque VARCHAR(45) NOT NULL,
-  	fis INT not NULL,
-  	magi INT not NULL,
-  	fire INT not NULL,
-  	eletro INT not NULL,
-  	crit INT NOt NULL,
-   	fis_res DECIMAL not NULL,
-  	magi_res DECIMAL not NULL,
-  	fire_res DECIMAL not NULL,
-  	eletro_res DECIMAL not NULL,
-  	stabilidade INT not NULL,
-  	durabilidade INT not NULL,
-  	peso DECIMAL not NULL, 
-  	str_bonus VARCHAR(1) not NULL,
-  	dex_bonus VARCHAR(1) not NULL,
-  	int_bonus VARCHAR(1) not NULL,
-  	fht_bonus VARCHAR(1) not NULL,
-  	str_req INT not NULL,
-  	dex_req INT not NULL,
-  	int_req INT not NULL,
-  	fht_req INT not NULL,  
+  	fis INT NOT NULL,
+  	magi INT NOT NULL,
+  	fire INT NOT NULL,
+  	eletro INT NOT NULL,
+  	crit INT NOT NULL,
+   	fis_res DECIMAL NOT NULL,
+  	magi_res DECIMAL NOT NULL,
+  	fire_res DECIMAL NOT NULL,
+  	eletro_res DECIMAL NOT NULL,
+  	stabilidade INT NOT NULL,
+  	durabilidade INT NOT NULL,
+  	peso DECIMAL NOT NULL, 
+  	str_bonus VARCHAR(1) NOT NULL,
+  	dex_bonus VARCHAR(1) NOT NULL,
+  	int_bonus VARCHAR(1) NOT NULL,
+  	fht_bonus VARCHAR(1) NOT NULL,
+  	str_req INT NOT NULL,
+  	dex_req INT NOT NULL,
+  	int_req INT NOT NULL,
+  	fht_req INT NOT NULL,  
   	FOREIGN key (nome_equipamento) REFERENCES items (nome)
-  );
+);
 
 CREATE TABLE armaduras (
-  	nome_armadura VARCHAR(45) not NULL unique,
-  	r_fis INT not NULL,
-  	r_impacto INT not NULL,
-  	r_corte INT not NULL,
-  	r_perfurar INT not NULL,
- 	r_magic INT not NULL,
-  	r_fogo INT not NULL,
-  	r_electro INT not NULL,
-  	r_bleed DECIMAL not NULL,
-  	r_poison DECIMAL not NULL,
-  	r_curse DECIMAL not NULL,
-  	durabilidade INT not NULL,
-  	peso DECIMAL not NULL,
-  	poise DECIMAL not NULL,
+  	nome_armadura VARCHAR(45) NOT NULL unique,
+  	r_fis INT NOT NULL,
+  	r_impacto INT NOT NULL,
+  	r_corte INT NOT NULL,
+  	r_perfurar INT NOT NULL,
+ 	r_magic INT NOT NULL,
+  	r_fogo INT NOT NULL,
+  	r_electro INT NOT NULL,
+  	r_bleed DECIMAL NOT NULL,
+  	r_poison DECIMAL NOT NULL,
+  	r_curse DECIMAL NOT NULL,
+  	durabilidade INT NOT NULL,
+  	peso DECIMAL NOT NULL,
+  	poise DECIMAL NOT NULL,
   	FOREIGN key (nome_armadura) REFERENCES items (nome)
-  );
-
-CREATE table inimigos (
-  	nome VARCHAR(45) NOT NULL UNIQUE,
-  	classe VARCHAR(45) NOT NULL,
-  	r_fis VARCHAR(8) not NULL,
-  	r_impacto VARCHAR(8) not NULL,
-  	r_corte VARCHAR(8) not NULL,
-  	r_perfurar VARCHAR(8) not NULL,
-  	r_magic VARCHAR(8) Not NULL,
-  	r_fogo VARCHAR(8) NOT NULL,
-  	r_electro VARCHAR(8) not NULL,
-  	r_poison VARCHAR(1) not NULL,
-  	r_toxic VARCHAR(1) not NULL,
-  	r_bleed VARCHAR(1) not NULL,
-  	PRIMARY key (nome)
-  );
-
-create table boss (
-  	nome VARCHAR(45) not NULL unique,
-  	HP INT not NULL,
-  	HP_NG INT not NULL,
-  	souls INT not NULL,
-  	souls_NG INT not NULL,
-  	PRIMARY key (nome)
-  );
-
-create table mapas (
-  	nome VARCHAR(45) not NULL unique,
-  	PRIMARY key (nome)
-  );
-
-create table npcs (
-  	nome VARCHAR(45) not NULL unique,
-  	PRIMARY key (nome)
-  );
+);
   
+CREATE TABLE equipa(
+  nome_personagem VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  slot VARCHAR(45) NOT NULL,
+  FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE,
+  UNIQUE (nome_personagem, slot)
+);
+
  CREATE TABLE npc_on_mapa (
-  nome_npc VARCHAR(45) not NULL,
-  nome_mapa VARCHAR(45) not NULL,
+  nome_npc VARCHAR(45) NOT NULL,
+  nome_mapa VARCHAR(45) NOT NULL,
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
   FOREIGN key (nome_mapa) REFERENCES mapas (nome)
-  );
+);
 
 CREATE TABLE npc_vende_item (
-  nome_npc VARCHAR(45) not NULL,
-  nome_item VARCHAR(45) not NULL,
-  preco VARCHAR(45) NOt NULL,
+  nome_npc VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  preco VARCHAR(45) NOT NULL,
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
   FOREIGN key (nome_item) REFERENCES items (nome)
-  );
+);
   
 CREATE TABLE npc_tem_item (
-  nome_npc VARCHAR(45) not NULL,
-  nome_item VARCHAR(45) not NULL,
+  nome_npc VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
   FOREIGN key (nome_item) REFERENCES items (nome)
-  );
+);
 
 CREATE TABLE npc_drops (
-  nome_npc VARCHAR(45) not null,
-  nome_item VARCHAR(45) not null,
-  chance DECIMAL(4,2) not null,
+  nome_npc VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  chance DECIMAL(4,2) NOT NULL,
   FOREIGN KEY (nome_npc) REFERENCES npcs (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE inimigo_drops (
-  nome_inimigo VARCHAR(45) not null,
-  nome_item VARCHAR(45) not null,
-  chance DECIMAL(4,2) not null,
+  nome_inimigo VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  chance DECIMAL(4,2) NOT NULL,
   FOREIGN KEY (nome_inimigo) REFERENCES inimigos (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE boss_drops (
-  nome_boss VARCHAR(45) not null,
-  nome_item VARCHAR(45) not null,
-  chance DECIMAL(4,2) not null,
+  nome_boss VARCHAR(45) NOT NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  chance DECIMAL(4,2) NOT NULL,
   FOREIGN KEY (nome_boss) REFERENCES boss (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE mapa_tem_item (
-  nome_item VARCHAR(45) not NULL,
-  nome_mapa VARCHAR(45) NOt NULL,
-  lugar VARCHAR (45) not NULL,
+  nome_item VARCHAR(45) NOT NULL,
+  nome_mapa VARCHAR(45) NOT NULL,
+  lugar VARCHAR (45) NOT NULL,
   FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE,
   FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) on DELETE CASCADE on UPDATE CASCADE
-  );
+);
