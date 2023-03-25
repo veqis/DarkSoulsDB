@@ -27,7 +27,7 @@ CREATE TABLE personagens(
   CREATE TABLE items (
   	nome varchar(40) NOT NULL UNIQUE,
   	descricao varchar (10000) NOT NULL,
-  	PRIMARY key (nome)
+  	PRIMARY KEY (nome)
 );
 
 CREATE TABLE inimigos (
@@ -43,7 +43,7 @@ CREATE TABLE inimigos (
   	r_poison VARCHAR(1) NOT NULL,
   	r_toxic VARCHAR(1) NOT NULL,
   	r_bleed VARCHAR(1) NOT NULL,
-  	PRIMARY key (nome)
+  	PRIMARY KEY (nome)
 );
 
 CREATE TABLE boss (
@@ -52,17 +52,17 @@ CREATE TABLE boss (
   	HP_NG INT NOT NULL,
   	souls INT NOT NULL,
   	souls_NG INT NOT NULL,
-  	PRIMARY key (nome)
+  	PRIMARY KEY (nome)
 );
 
 CREATE TABLE mapas (
   	nome VARCHAR(45) NOT NULL unique,
-  	PRIMARY key (nome)
+  	PRIMARY KEY (nome)
 );
 
 CREATE TABLE npcs (
   	nome VARCHAR(45) NOT NULL unique,
-  	PRIMARY key (nome)
+  	PRIMARY KEY (nome)
 );
 
 CREATE TABLE spells (
@@ -73,7 +73,7 @@ CREATE TABLE spells (
   	int_req int NOT NULL,
   	fht_req int NOT NULL,
   	tipo VARCHAR(45) NOT NULL,
-  	FOREIGN KEY (nome_spell) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE
+  	FOREIGN KEY (nome_spell) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE equipamentos (
@@ -100,7 +100,7 @@ CREATE TABLE equipamentos (
   	dex_req INT NOT NULL,
   	int_req INT NOT NULL,
   	fht_req INT NOT NULL,  
-  	FOREIGN key (nome_equipamento) REFERENCES items (nome)
+  	FOREIGN KEY (nome_equipamento) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE armaduras (
@@ -118,38 +118,38 @@ CREATE TABLE armaduras (
   	durabilidade INT NOT NULL,
   	peso DECIMAL NOT NULL,
   	poise DECIMAL NOT NULL,
-  	FOREIGN key (nome_armadura) REFERENCES items (nome)
+  	FOREIGN KEY (nome_armadura) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
   
 CREATE TABLE equipa(
   nome_personagem VARCHAR(45) NOT NULL,
   nome_item VARCHAR(45) NOT NULL,
   slot VARCHAR(45) NOT NULL,
-  FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) on DELETE CASCADE on UPDATE CASCADE,
-  FOREIGN KEY (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE,
+  FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE (nome_personagem, slot)
 );
 
  CREATE TABLE npc_on_mapa (
   nome_npc VARCHAR(45) NOT NULL,
   nome_mapa VARCHAR(45) NOT NULL,
-  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
-  FOREIGN key (nome_mapa) REFERENCES mapas (nome)
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE npc_vende_item (
   nome_npc VARCHAR(45) NOT NULL,
   nome_item VARCHAR(45) NOT NULL,
   preco VARCHAR(45) NOT NULL,
-  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
-  FOREIGN key (nome_item) REFERENCES items (nome)
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
   
 CREATE TABLE npc_tem_item (
   nome_npc VARCHAR(45) NOT NULL,
   nome_item VARCHAR(45) NOT NULL,
-  FOREIGN KEY (nome_npc) REFERENCES npcs (nome),
-  FOREIGN key (nome_item) REFERENCES items (nome)
+  FOREIGN KEY (nome_npc) REFERENCES npcs (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE npc_drops (
@@ -180,6 +180,6 @@ CREATE TABLE mapa_tem_item (
   nome_item VARCHAR(45) NOT NULL,
   nome_mapa VARCHAR(45) NOT NULL,
   lugar VARCHAR (45) NOT NULL,
-  FOREIGN key (nome_item) REFERENCES items (nome) on DELETE CASCADE on UPDATE CASCADE,
-  FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) on DELETE CASCADE on UPDATE CASCADE
+  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
