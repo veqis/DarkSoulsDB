@@ -1,7 +1,6 @@
 CREATE TABLE personagens(
   	nome VARCHAR(40) NOT NULL unique,
   	almas int NOT NULL,
-  	nivel int NOT NULL,
   	classe varchar(40) check( classe = 'Warrior' or classe = 'Knight' or classe = 'Wanderer' or classe = 'Thief' or classe = 'Bandit' or classe = 'Hunter' or classe = 'Sorcerer' or classe = 'Pyromancer' or classe = 'Cleric' or classe = 'Deprived') NOT NULL,
   	hp int NOT NULL,
   	stamina int NOT NULL,
@@ -12,6 +11,7 @@ CREATE TABLE personagens(
   	poison_res int NOT NULL,
   	curse_res int NOT NULL,
   	poise int NOT NULL,
+  	nivel int NOT NULL,
   	vit int NOT NULL,
   	att int NOT NULL,
   	endu int NOT NULL,
@@ -57,6 +57,8 @@ CREATE TABLE boss (
 
 CREATE TABLE mapas (
   	nome VARCHAR(45) NOT NULL unique,
+  	nome_boss VARCHAR(45) not NULL,
+  	FOREIGN key (nome_boss) REFERENCES boss (nome),
   	PRIMARY KEY (nome)
 );
 
@@ -121,13 +123,22 @@ CREATE TABLE armaduras (
   	FOREIGN KEY (nome_armadura) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
   
-CREATE TABLE equipa(
-  nome_personagem VARCHAR(45) NOT NULL,
+create table inventario (
+ 	nome_item VARCHAR(45) not NULL,
+  	nome_personagem VARCHAR(45) not NULL,
+  	quantidade INT not NULL,
+  	UNIQUE (nome_item, nome_personagem),
+  	primary key (nome_item, nome_personagem),
+  	foreign key (nome_item) references items (nome) on delete cascade on update cascade,
+  	foreign key (nome_personagem) references personagens (nome) on delete cascade on update cascade
+);
+
+CREATE TABLE equipa (
   nome_item VARCHAR(45) NOT NULL,
-  slot VARCHAR(45) NOT NULL,
-  FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (nome_item) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE,
-  UNIQUE (nome_personagem, slot)
+  nome_personagem VARCHAR(45) NOT NULL,
+  slot INT NOT NULL,
+  UNIQUE (nome_personagem, slot),
+  FOREIGN KEY (nome_item, nome_personagem) REFERENCES inventario (nome_item, nome_personagem) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
  CREATE TABLE npc_on_mapa (
