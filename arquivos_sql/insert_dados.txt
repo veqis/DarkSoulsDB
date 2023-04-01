@@ -1129,3 +1129,24 @@ VALUES
 ('Stray Demon', ' 5250', ' 20000'),
 ('Taurus Demon', ' 1215', ' 3000'),
 ('The Bed of Chaos', '2', ' 60000');
+
+INSERT INTO mapas (nome,nome_boss) 
+VALUES
+('Northern Undead Asylum', 'Asylum Demon'),
+('Undead Burg', 'Taurus Demon'),
+('Undead Parish', 'Bell Gargoyle'),
+('Depths', 'Gaping Dragon'),
+('Blighttown', 'Chaos Witch Quelaag'),
+('Black Hydra', 'Iron Golem'),
+('Anor Londo', 'Ornstein and Smough'),
+('Painted World of Ariamis', 'Crossbreed Priscilla'),
+('Darkroot Garden', 'Moonlight Butterfly'),
+('Darkroot Basin', 'Great Grey Wolf Sif'),
+('New Londo Ruins', 'Four Kings'),
+('The Duke''s Archives', 'Crystal Golem'),
+('Crystal Cave', 'Seath the Scaleless'),
+('Demon Ruins', 'Ceaseless Discharge'),
+('Lost Izalith', 'The Bed of Chaos'),
+('The Catacombs', 'Pinwheel'),
+('Tomb of Giants', 'Nito'),
+('Kiln of the first flame', 'Gwyn Lord of Cinder');
