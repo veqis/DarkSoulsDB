@@ -955,7 +955,28 @@ VALUES
 ('Darkmoon Soldiers'),
 ('Possessed Tree'),
 ('Mimic'),
-('Vagrants');
+('Vagrants'),
+('Bell Gargoyle'),
+('Capra Demon'),
+('Ceaseless Discharge'),
+('Centipede Demon'),
+('Chaos Witch Quelaag'),
+('Crossbreed Priscilla'),
+('Dark Sun Gwyndolin'),
+('Demon Firesage'),
+('Four Kings'),
+('Gaping Dragon'),
+('Great Grey Wolf Sif'),
+('Gwyn Lord of Cinder'),
+('Iron Golem'),
+('Moonlight Butterfly'),
+('Nito'),
+('Ornstein and Smough'),
+('Pinwheel'),
+('Seath the Scaleless'),
+('Stray Demon'),
+('Taurus Demon'),
+('The Bed of Chaos');
 
 INSERT INTO monstro (nome_monstro,hp_monstro,r_fis,r_impacto,r_corte,r_perfurar,r_magic,r_fogo,r_electro,r_poison,r_toxic,r_bleed) 
 VALUES
