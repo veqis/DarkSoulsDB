@@ -101,14 +101,14 @@ CREATE TABLE armaduras (
 
 CREATE TABLE monstro (
   	nome_monstro VARCHAR(45) NOT NULL UNIQUE,
-  	classe VARCHAR(45) NOT NULL,
-  	r_fis VARCHAR(8) NOT NULL,
-  	r_impacto VARCHAR(8) NOT NULL,
-  	r_corte VARCHAR(8) NOT NULL,
-  	r_perfurar VARCHAR(8) NOT NULL,
-  	r_magic VARCHAR(8) NOT NULL,
-  	r_fogo VARCHAR(8) NOT NULL,
-  	r_electro VARCHAR(8) NOT NULL,
+	hp_monstro INT NOT NULL,
+  	r_fis INT NOT NULL,
+  	r_impacto INT NOT NULL,
+  	r_corte INT NOT NULL,
+  	r_perfurar INT NOT NULL,
+  	r_magic INT NOT NULL,
+  	r_fogo INT NOT NULL,
+  	r_electro INT NOT NULL,
   	r_poison VARCHAR(1) NOT NULL,
   	r_toxic VARCHAR(1) NOT NULL,
   	r_bleed VARCHAR(1) NOT NULL,
@@ -170,8 +170,8 @@ CREATE TABLE mapa_tem_item (
 );
 
 CREATE TABLE respawn (
-  nome_personagem VARCHAR(45) NOT NULL,
-  nome_mapa VARCHAR(45) NOT NULL,
+  nome_personagem VARCHAR(45) NOT NULL UNIQUE,
+  nome_mapa VARCHAR(45) NOT NULL UNIQUE,
   nivel_bonefire VARCHAR (45) NOT NULL,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
