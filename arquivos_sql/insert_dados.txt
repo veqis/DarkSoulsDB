@@ -1057,3 +1057,26 @@ VALUES
 ('Possessed Tree', '540', '180', '180', '180', '180', '144', '90', '162', 'D', 'D', 'S'),
 ('Mimic', '992', '231 ', '231 ', '231 ', '231 ', '161 ', '137 ', '196 ', 'A', 'A', 'A'),
 ('Vagrants', '62', '00', '00', '00', '00', '00', '00', '00', '0', '0', '0');
+
+INSERT INTO boss (nome_boss,hp,souls) 
+VALUES
+('Asylum Demon', '825', '2000'),
+('Bell Gargoyle', '1000', '10000'),
+('Capra Demon', '1176', ' 6000'),
+('Ceaseless Discharge', ' 4200', ' 20000'),
+('Centipede Demon', ' 3432', ' 40000'),
+('Chaos Witch Quelaag', ' 3139', ' 20000'),
+('Crossbreed Priscilla', ' 2300', ' 30000'),
+('Dark Sun Gwyndolin', ' 2000', ' 40000'),
+('Demon Firesage', ' 5950', ' 20000'),
+('Four Kings', ' 9604', ' 60000'),
+('Gaping Dragon', ' 4401', ' 25000'),
+('Great Grey Wolf Sif', ' 3432', ' 40000'),
+('Gwyn Lord of Cinder', ' 4250', ' 70000'),
+('Iron Golem', ' 2880', ' 40000'),
+('Nito', ' 4317', ' 60000'),
+('Pinwheel', ' 1326', ' 15000'),
+('Seath the Scaleless', ' 5525', ' 60000'),
+('Stray Demon', ' 5250', ' 20000'),
+('Taurus Demon', ' 1215', ' 3000'),
+('The Bed of Chaos', '2', ' 60000');
