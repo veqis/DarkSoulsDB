@@ -974,6 +974,7 @@ VALUES
 ('Ornstein and Smough'),
 ('Pinwheel'),
 ('Seath the Scaleless'),
+('Asylum Demon'),
 ('Stray Demon'),
 ('Taurus Demon'),
 ('The Bed of Chaos'),
