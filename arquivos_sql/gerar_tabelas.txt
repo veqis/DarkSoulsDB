@@ -93,7 +93,7 @@ CREATE TABLE armaduras (
   	r_bleed DECIMAL NOT NULL,
   	r_poison DECIMAL NOT NULL,
   	r_curse DECIMAL NOT NULL,
-  	durabilidade INT NOT NULL,
+  	durabilidade DECIMAL NOT NULL,
   	peso DECIMAL NOT NULL,
   	poise DECIMAL NOT NULL,
   	FOREIGN KEY (nome_armadura) REFERENCES items (nome) ON DELETE CASCADE ON UPDATE CASCADE
