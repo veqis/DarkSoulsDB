@@ -82,6 +82,7 @@ CREATE TABLE equipamentos (
 
 CREATE TABLE armaduras (
   	nome_armadura VARCHAR(45) NOT NULL unique,
+	tipo_armadura VARCHAR(45) NOT NULL check ( tipo_armadura = 'Head Armor' or tipo_armadura = 'Chest Armor' or tipo_armadura = 'Hands Armor' or tipo_armadura = 'Legs Armor'),
   	r_fis INT NOT NULL,
   	r_impacto INT NOT NULL,
   	r_corte INT NOT NULL,
