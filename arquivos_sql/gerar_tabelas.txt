@@ -140,7 +140,7 @@ CREATE TABLE inventario (
 CREATE TABLE equipa (
   nome_item VARCHAR(45) NOT NULL,
   nome_personagem VARCHAR(45) NOT NULL,
-  slot INT NOT NULL,
+  slot VARCHAR(45) NOT NULL check ( slot = 'm_esquerda_1' or slot = 'm_esquerda_2' or slot = 'm_direita_1' OR slot = 'm_direita_1' or slot = 'capacete' or slot = 'peitoral' or slot = 'luvas' or slot = 'botas' or slot = 'anel_1' or slot = 'anel_2' or slot = 'ammo_1' or slot = 'ammo_2' or slot = 'ammo_3' or slot = 'ammo_4' or slot = 'cinto_1' or slot = 'cinto_2' or slot = 'cinto_3' or slot = 'cinto_4' or slot = 'cinto_5' ),
   UNIQUE (nome_personagem, slot),
   FOREIGN KEY (nome_item, nome_personagem) REFERENCES inventario (nome_item, nome_personagem) ON DELETE CASCADE ON UPDATE CASCADE
 );
