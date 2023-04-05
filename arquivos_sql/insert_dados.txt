@@ -1137,7 +1137,7 @@ VALUES
 ('Undead Parish', 'Bell Gargoyle'),
 ('Depths', 'Gaping Dragon'),
 ('Blighttown', 'Chaos Witch Quelaag'),
-('Black Hydra', 'Iron Golem'),
+('Sens Fortress', 'Iron Golem'),
 ('Anor Londo', 'Ornstein and Smough'),
 ('Painted World of Ariamis', 'Crossbreed Priscilla'),
 ('Darkroot Garden', 'Moonlight Butterfly'),
@@ -1156,3 +1156,40 @@ VALUES
 ('Knight Solaire', 'Knight', 1000, 100, 100, 0, 100, 0, 100, 100, 100, 100, 1, 10, 10, 10, 10, 10, 10, 10, 10, 1),
 ('Thief', 'Thief', 500, 80, 120, 30, 100, 0, 50, 50, 50, 50, 1, 8, 14, 10, 9, 15, 8, 8, 8, 1),
 ('Cleric', 'Cleric', 2000, 120, 80, 50, 100, 2, 70, 70, 70, 70, 1, 12, 8, 12, 10, 8, 14, 14, 8, 1);
+
+INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+VALUES 
+('Catarina Armor','Knight Solaire','1'),
+('Catarina Gauntlets','Knight Solaire','1'),
+('Catarina Helm','Knight Solaire','1'),
+('Catarina Leggings','Knight Solaire','1'),
+('Astora''s Straight Sword','Knight Solaire','1');
+
+INSERT INTO equipa (nome_item,nome_personagem,slot) 
+VALUES 
+('Catarina Armor','Knight Solaire','peitoral'),
+('Catarina Gauntlets','Knight Solaire','luvas'),
+('Catarina Helm','Knight Solaire','capacete'),
+('Catarina Leggings','Knight Solaire','botas'),
+('Astora''s Straight Sword','Knight Solaire','m_esquerda_1');
+
+INSERT INTO dropa (nome_entidade,nome_item,chance) 
+VALUES
+('Stone Demon','Large Titanite Shard','30'); 
+
+INSERT INTO mapa_tem_item (nome_item,nome_mapa,lugar)
+VALUES 
+('Gravelord Greatsword Dance','Tomb of Giants','cadaver'),
+('Escape Death','Tomb of Giants','cadaver'),
+('Gravelord Sword Dance','Tomb of Giants','cadaver');
+
+INSERT INTO respawn (nome_personagem,nome_mapa,nivel_bonefire) 
+VALUES
+('Knight Solaire','Blighttown','3'); 
+
+INSERT INTO progresso (nome_personagem,nome_boss) 
+VALUES 
+('Knight Solaire','Asylum Demon'),
+('Knight Solaire','Bell Gargoyle'),
+('Knight Solaire','Capra Demon'),
+('Knight Solaire','Gaping Dragon');
