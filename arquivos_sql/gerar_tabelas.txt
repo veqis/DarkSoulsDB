@@ -178,8 +178,9 @@ CREATE TABLE respawn (
 );
 
 CREATE TABLE progresso (
-  nome_personagem VARCHAR(45) NOT NULL UNIQUE,
-  nome_boss VARCHAR(45) NOT NULL UNIQUE,
+  nome_personagem VARCHAR(45) NOT NULL,
+  nome_boss VARCHAR(45) NOT NULL,
+  UNIQUE (nome_personagem, nome_boss),
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_boss) REFERENCES entidades (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
