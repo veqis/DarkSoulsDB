@@ -20,6 +20,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+---
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -34,7 +35,7 @@ AFTER INSERT ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
 
-
+---
 CREATE OR REPLACE FUNCTION Calc_Estus()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -50,3 +51,27 @@ AFTER INSERT ON respawn
 FOR EACH ROW
 EXECUTE FUNCTION Calc_Estus();
 
+--
+CREATE OR REPLACE FUNCTION HP_Check()
+RETURNS TRIGGER AS $$
+DECLARE
+    hp_max INT;
+BEGIN
+    SELECT hp INTO hp_max
+    FROM personagens
+    WHERE nome = NEW.nome_personagem;
+    
+    IF NEW.hp_atual > hp_max THEN
+        UPDATE estado_personagem
+        SET hp_atual = hp_max
+        WHERE nome_personagem = NEW.nome_personagem;
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER Trava_HP
+AFTER UPDATE ON estado_personagem
+FOR EACH ROW
+EXECUTE FUNCTION HP_Check();
