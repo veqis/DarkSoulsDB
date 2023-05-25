@@ -190,7 +190,7 @@ CREATE TABLE estado_personagem (
   UNIQUE (nome_personagem),
   hp_atual int NOT NULL,
   almas_atual int NOT NULL,
-  humanidade_atual int NOT NULL,
+  hum_atual int NOT NULL,
   estus_atual int,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
  );
