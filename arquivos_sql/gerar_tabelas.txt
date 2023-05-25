@@ -17,7 +17,6 @@ CREATE TABLE personagens(
   	endu int NOT NULL,
   	str int NOT NULL,
   	dex int NOT NULL,
-  	res int NOT NULL,
   	int int NOT NULL,
   	fth int NOT NULL,
   	hum int NOT NULL,
