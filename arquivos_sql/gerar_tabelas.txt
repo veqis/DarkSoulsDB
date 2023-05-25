@@ -172,7 +172,7 @@ CREATE TABLE mapa_tem_item (
 CREATE TABLE respawn (
   nome_personagem VARCHAR(45) NOT NULL UNIQUE,
   nome_mapa VARCHAR(45) NOT NULL UNIQUE,
-  nivel_bonefire VARCHAR (45) NOT NULL,
+  nivel_bonefire INT NULL,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (nome_mapa) REFERENCES mapas (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
