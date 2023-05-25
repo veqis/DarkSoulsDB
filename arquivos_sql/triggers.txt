@@ -4,3 +4,12 @@ BEGIN
 	update personagens    	
 END;  
 $$ LANGUAGE plpgsql; 
+
+////////////////////////
+
+CREATE TABLE estado_personagem (
+  nome_personagem VARCHAR(45) NOT NULL,
+  UNIQUE (nome_personagem),
+  hp_atual int Not NULL,
+  FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
+);
