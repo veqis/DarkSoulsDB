@@ -1,3 +1,4 @@
+-------------------->Função de curar personagem<----------------------------
 CREATE OR REPLACE FUNCTION Cura_Personagem (nome_personagem VARCHAR)
 RETURNS VARCHAR AS $$
 DECLARE
