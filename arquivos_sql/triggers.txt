@@ -87,6 +87,31 @@ BEGIN
     ELSEIF calsse = 'Knight' THEN
     	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 40, 30, 30, 0, 5, 14, 10, 10, 11, 11, 10, 9, 11, 0);
+    ELSEIF classe = 'Wanderer' THEN
+    	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 40, 42, 30, 0, 3, 10, 11, 10, 10, 14, 12, 11, 8, 0);
+    ELSEIF classe = 'Thief' THEN
+     	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 37, 30, 30, 0, 5, 9, 11, 9, 9, 15, 10, 12, 11, 0);
+    ELSEIF classe = 'Bandit' THEN
+     	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 56, 36, 36, 0, 4, 12, 8, 14, 14, 9, 11, 8, 10, 0);
+   ELSEIF classe = 'Hunter' THEN
+		INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 36, 30, 0, 4, 11, 9, 11, 12, 14, 11, 9, 9, 0);
+   ELSEIF classe = 'Sorcerer' THEN
+		INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 33, 26, 30, 0, 3, 8, 15, 8, 9, 11, 8, 15, 8 0);  		
+   ELSEIF classe = 'Pyromancer' THEN
+		INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 42, 30, 0, 1, 10, 12, 11, 12, 9, 12, 10, 8, 0);
+   ELSEIF classe = 'Cleric' THEN
+		INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 37, 36, 30, 0, 2, 11, 11, 9, 12, 8, 11, 8, 14, 0);
+	ELSEIF classe = 'Deprived' THEN
+    	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 36, 30, 0, 6, 11, 11, 11, 11, 11, 11, 11, 11, 0):
+                
         RETURN 'Personagem criado com sucesso.';
     END IF;
     
@@ -94,4 +119,4 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT Criar_Personagem('John', 'Warrior');
+SELECT Criar_Personagem('jose', 'Deprived');
