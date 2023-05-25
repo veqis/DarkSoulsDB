@@ -20,10 +20,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
-SELECT cura_personagem ('Knight Solaire');
--------------------------------------------
-
 CREATE TABLE estado_personagem (
   nome_personagem VARCHAR(45) NOT NULL,
   UNIQUE (nome_personagem),
@@ -34,7 +30,7 @@ CREATE TABLE estado_personagem (
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
----------------------------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -48,7 +44,8 @@ CREATE TRIGGER Update_Estado_Personagem
 AFTER INSERT ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
-------------------------------------------------------------------------------------------------
+
+
 CREATE OR REPLACE FUNCTION Calc_Estus()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -59,7 +56,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-INSERT INTO respawn (nome_personagem,nome_mapa,nivel_bonefire) 
-VALUES
-('Knight Solaire','Blighttown', 3); 
-------------------------------------------------------------------------------------------------
+CREATE TRIGGER Estus_UPDT
+AFTER INSERT ON respawn
+FOR EACH ROW
+EXECUTE FUNCTION Calc_Estus();
+
