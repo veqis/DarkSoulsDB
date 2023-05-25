@@ -1,10 +1,15 @@
-CREATE or REPLACE FUNCTION Morte_personagem ()
-RETURN TRIGGER as $$npcs
+CREATE OR REPLACE FUNCTION cura_personagem (nome_personagem VARCHAR)
+RETURNS VARCHAR AS $$
 BEGIN
-	update personagens    	
-END;  
-$$ LANGUAGE plpgsql; 
+	UPDATE estado_personagem 
+	SET hp_atual = hp_atual + 10
+	WHERE estado_personagem.nome_personagem = cura_personagem.nome_personagem;
+	
+	RETURN 'Personagem curado.';
+END;
+$$ LANGUAGE plpgsql;
 
+SELECT cura_personagem ('Knight Solaire');
 ////////////////////////
 
 CREATE TABLE estado_personagem (
