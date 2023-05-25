@@ -26,8 +26,8 @@ CREATE TABLE estado_personagem (
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
-	INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual)
-	VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum);
+	INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual, estus_atual)
+	VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum, 0);
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
