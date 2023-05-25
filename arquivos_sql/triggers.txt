@@ -10,7 +10,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 SELECT cura_personagem ('Knight Solaire');
-////////////////////////
+-------------------------------------------
 
 CREATE TABLE estado_personagem (
   nome_personagem VARCHAR(45) NOT NULL,
@@ -20,3 +20,14 @@ CREATE TABLE estado_personagem (
   almas_atual int not NULL,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+---------------------------------
+CREATE OR REPLACE FUNCTION Novo_Personagem()
+RETURNS TRIGGER AS $$
+BEGIN
+	INSERT into estado_personagem 
+    VALUES
+    (new.nome, new.hp, new.almas);
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
