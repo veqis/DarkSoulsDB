@@ -193,3 +193,4 @@ CREATE TABLE estado_personagem (
   humanidade_atual int NOT NULL,
   estus_atual int,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
+ );
