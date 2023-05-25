@@ -22,7 +22,7 @@ CREATE TABLE estado_personagem (
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
----------------------------------
+---------------------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -36,3 +36,18 @@ CREATE TRIGGER Update_Estado_Personagem
 AFTER INSERT ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
+------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION Calc_Estus()
+RETURNS TRIGGER AS $$
+BEGIN
+	UPDATE estado_personagem
+	SET estus_atual = (SELECT nivel_bonefire FROM respawn WHERE nome_personagem = NEW.nome_personagem) * 5
+	WHERE nome_personagem = NEW.nome_personagem;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+INSERT INTO respawn (nome_personagem,nome_mapa,nivel_bonefire) 
+VALUES
+('Knight Solaire','Blighttown', 3); 
+------------------------------------------------------------------------------------------------
