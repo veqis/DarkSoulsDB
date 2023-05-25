@@ -15,10 +15,10 @@ SELECT cura_personagem ('Knight Solaire');
 CREATE TABLE estado_personagem (
   nome_personagem VARCHAR(45) NOT NULL,
   UNIQUE (nome_personagem),
-  hp_atual int Not NULL,
-  estus_atual int NOT NULL,
-  almas_atual int not NULL,
-  humanidade_atual int not NULL,
+  hp_atual int NOT NULL,
+  almas_atual int NOT NULL,
+  humanidade_atual int NOT NULL,
+  estus_atual int,
   FOREIGN KEY (nome_personagem) REFERENCES personagens (nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
