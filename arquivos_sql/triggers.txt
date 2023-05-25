@@ -76,3 +76,22 @@ CREATE TRIGGER Trava_HP
 AFTER UPDATE ON estado_personagem
 FOR EACH ROW
 EXECUTE FUNCTION HP_Check();
+
+-------------------->Função de criar personagem<----------------------------
+CREATE OR REPLACE FUNCTION Criar_Personagem(nome_personagem VARCHAR, classe VARCHAR)
+RETURNS VARCHAR AS $$
+BEGIN
+    IF classe = 'Warrior' THEN
+        INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 50, 100, 0, 48, 36, 30, 0, 4, 11, 8, 12, 13, 13, 11, 9, 0);
+    ELSEIF calsse = 'Knight' THEN
+    	INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, int, fth, hum)
+        VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 40, 30, 30, 0, 5, 14, 10, 10, 11, 11, 10, 9, 11, 0);
+        RETURN 'Personagem criado com sucesso.';
+    END IF;
+    
+    RETURN 'Classe não suportada.';
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT Criar_Personagem('John', 'Warrior');
