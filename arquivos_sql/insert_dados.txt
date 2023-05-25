@@ -1185,7 +1185,7 @@ VALUES
 
 INSERT INTO respawn (nome_personagem,nome_mapa,nivel_bonefire) 
 VALUES
-('Knight Solaire','Blighttown','3'); 
+('Knight Solaire','Blighttown', 3); 
 
 INSERT INTO progresso (nome_personagem,nome_boss) 
 VALUES 
