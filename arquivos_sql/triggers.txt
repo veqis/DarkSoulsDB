@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION cura_personagem (nome_personagem VARCHAR)
+CREATE OR REPLACE FUNCTION Cura_Personagem (nome_personagem VARCHAR)
 RETURNS VARCHAR AS $$
 DECLARE
     estus_disponivel INT;
