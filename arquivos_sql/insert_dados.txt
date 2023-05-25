@@ -1153,9 +1153,9 @@ VALUES
 
 INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
 VALUES
-('Knight Solaire', 'Knight', 1000, 100, 100, 0, 100, 0, 100, 100, 100, 100, 1, 10, 10, 10, 10, 10, 10, 10, 1),
-('Thief', 'Thief', 500, 80, 120, 30, 100, 0, 50, 50, 50, 50, 1, 8, 14, 10, 9, 15, 8, 8, 1),
-('Cleric', 'Cleric', 2000, 120, 80, 50, 100, 2, 70, 70, 70, 70, 1, 12, 8, 12, 10, 8, 14, 8, 1);
+('Knight Solaire', 'Knight', 1000, 100, 100, 0, 100, 0, 100, 100, 100, 100, 1, 10, 10, 10, 10, 10, 10, 10, 10, 1),
+('Thief', 'Thief', 500, 80, 120, 30, 100, 0, 50, 50, 50, 50, 1, 8, 14, 10, 9, 15, 8, 8, 8, 1),
+('Cleric', 'Cleric', 2000, 120, 80, 50, 100, 2, 70, 70, 70, 70, 1, 12, 8, 12, 10, 10, 8, 14, 8, 1);
 
 INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
 VALUES 
