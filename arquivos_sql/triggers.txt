@@ -32,3 +32,8 @@ BEGIN
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER Update_Estado_Personagem
+AFTER INSERT ON personagens
+FOR EACH ROW
+EXECUTE FUNCTION Novo_Personagem();
