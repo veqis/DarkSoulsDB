@@ -204,3 +204,6 @@ AFTER INSERT OR UPDATE ON personagens
 FOR EACH ROW
 WHEN (pg_trigger_depth() < 1)
 EXECUTE FUNCTION Calcular_Status();
+
+-------------------------------------------->Função de Level-UP<-------------------------------------------------------------------------
+
