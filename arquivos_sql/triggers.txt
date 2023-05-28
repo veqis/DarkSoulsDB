@@ -207,3 +207,33 @@ EXECUTE FUNCTION Calcular_Status();
 
 -------------------------------------------->Função de Level-UP<-------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION Level_UP(nome_personagem VARCHAR, atributo VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE 
+    lv_atual INT;
+    almas_atual INT;
+BEGIN
+    SELECT nivel, almas INTO lv_atual, almas_atual
+    FROM personagens
+    WHERE nome = nome_personagem;
+
+    IF almas_atual >= POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895 THEN
+        UPDATE personagens
+        SET almas = almas - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
+        	nivel = nivel + 1
+        WHERE nome = nome_personagem;	
+            
+        IF atributo = 'int' THEN
+            UPDATE personagens
+            SET "int" = "int" + 1
+            WHERE nome = nome_personagem;
+        END IF;
+
+        -- Fazer update com o resto
+
+        RETURN 'Subiu de nível.';
+    ELSE
+        RETURN 'Almas insuficientes para subir de nível.';
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
