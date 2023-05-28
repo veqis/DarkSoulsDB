@@ -150,7 +150,8 @@ BEGIN
     SET hp = 300 + (vit * 50),
         stamina = 90 + (endu * 2),
         equip_load = 50 + endu,
-        item_discovery = 100 + (10*hum)
+        item_discovery = 100 + (10*hum),
+        attunment_slot = (att/5)
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = new.nome) > 160) THEN
@@ -165,6 +166,12 @@ BEGIN
         WHERE nome = new.nome;
     END IF;
     
+    IF ( (SELECT attunment_slot FROM personagens WHERE nome = new.nome) > 10 ) THEN 
+        UPDATE personagens
+        SET attunment_slot = 10
+        WHERE nome = new.nome;
+    END IF;
+        
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
