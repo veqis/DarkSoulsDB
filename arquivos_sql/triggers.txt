@@ -147,11 +147,20 @@ CREATE OR REPLACE FUNCTION Calcular_Status()
 RETURNS TRIGGER AS $$
 BEGIN
     UPDATE personagens 
-    SET hp = 300 + (vit*50)
+    SET hp = 300 + (vit * 50),
+        stamina = 90 + (endu * 2)
     WHERE nome = NEW.nome;
+
+    IF ( (SELECT stamina FROM personagens WHERE nome = new.nome) > 160) THEN
+        UPDATE personagens
+        SET stamina = 160
+        WHERE nome = NEW.nome;
+    END IF;
+    
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE TRIGGER Edit_Status
 AFTER INSERT OR UPDATE ON personagens
