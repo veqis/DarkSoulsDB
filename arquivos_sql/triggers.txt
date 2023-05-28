@@ -162,7 +162,7 @@ BEGIN
         bleed_res = 30 + endu,
         poison_res = 30 + res,
         curse_res = 30 + hum,
-        poise = soma_poise
+        poise = 0 + soma_poise
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = NEW.nome) > 160) THEN
