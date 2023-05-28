@@ -150,8 +150,8 @@ BEGIN
     SET hp = 300 + (vit * 50),
         stamina = 90 + (endu * 2),
         equip_load = 50 + endu,
-        item_discovery = 100 + (10*hum),
-        attunment_slot = (att/5),
+        item_discovery = 100 + (10 * hum),
+        attunment_slot = (att / 5),
         bleed_res = 30 + endu,
         poison_res = 30 + res,
         curse_res = 30 + hum
@@ -164,7 +164,7 @@ BEGIN
     END IF;
     
     IF ( (SELECT item_discovery FROM personagens WHERE nome = NEW.nome) > 200) THEN
-    	UPDATE personagens
+        UPDATE personagens
         SET item_discovery = 200
         WHERE nome = new.nome;
     END IF;
@@ -172,6 +172,24 @@ BEGIN
     IF ( (SELECT attunment_slot FROM personagens WHERE nome = new.nome) > 10 ) THEN 
         UPDATE personagens
         SET attunment_slot = 10
+        WHERE nome = new.nome;
+    END IF;
+    
+    IF ( (SELECT bleed_res FROM personagens WHERE nome = new.nome) > 150) THEN
+        UPDATE personagens
+        SET bleed_res = 150
+        WHERE nome = new.nome;
+    END IF;
+        
+    IF ( (SELECT poison_res FROM personagens WHERE nome = new.nome) > 150) THEN
+        UPDATE personagens
+        SET poison_res = 150
+        WHERE nome = new.nome;
+    END IF;
+        
+    IF ( (SELECT curse_res FROM personagens WHERE nome = new.nome) > 150) THEN
+        UPDATE personagens
+        SET curse_res = 150
         WHERE nome = new.nome;
     END IF;
         
