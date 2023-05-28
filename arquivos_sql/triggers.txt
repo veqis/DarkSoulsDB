@@ -56,8 +56,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER Update_Estado_Personagem
-AFTER INSERT ON personagens
+CREATE OR REPLACE TRIGGER Update_Estado_Personagem
+AFTER INSERT OR UPDATE ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
 
