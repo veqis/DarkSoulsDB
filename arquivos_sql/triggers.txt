@@ -148,7 +148,8 @@ RETURNS TRIGGER AS $$
 BEGIN
     UPDATE personagens 
     SET hp = 300 + (vit * 50),
-        stamina = 90 + (endu * 2)
+        stamina = 90 + (endu * 2),
+        equip_load = 50 + endu
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = new.nome) > 160) THEN
@@ -160,7 +161,6 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 
 CREATE OR REPLACE TRIGGER Edit_Status
 AFTER INSERT OR UPDATE ON personagens
