@@ -151,7 +151,10 @@ BEGIN
         stamina = 90 + (endu * 2),
         equip_load = 50 + endu,
         item_discovery = 100 + (10*hum),
-        attunment_slot = (att/5)
+        attunment_slot = (att/5),
+        bleed_res = 30 + endu,
+        poison_res = 30 + res,
+        curse_res = 30 + hum
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = new.nome) > 160) THEN
@@ -175,7 +178,6 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 
 CREATE OR REPLACE TRIGGER Edit_Status
 AFTER INSERT OR UPDATE ON personagens
