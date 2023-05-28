@@ -141,3 +141,20 @@ $$ LANGUAGE plpgsql;
 
 -----SELECT Criar_Personagem('jose', 'Deprived');
 -----Adicionar os itens das classes
+
+-------------------------------------------->Trigger que autocalcula status dos personagens<---------------------------------------------
+CREATE OR REPLACE FUNCTION Calcular_Status()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE personagens 
+    SET hp = 300 + (vit*50)
+    WHERE nome = NEW.nome;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER Edit_Status
+AFTER INSERT OR UPDATE ON personagens
+FOR EACH ROW
+WHEN (pg_trigger_depth() < 1)
+EXECUTE FUNCTION Calcular_Status();
