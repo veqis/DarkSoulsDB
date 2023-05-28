@@ -1,4 +1,4 @@
--------------------------------------------->Função de curar personagem<----------------------------
+-------------------------------------------->Função de curar personagem<-----------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Cura_Personagem (nome_personagem VARCHAR)
 RETURNS VARCHAR AS $$
 DECLARE
@@ -21,7 +21,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--------------------------------------------->Trigger que não permite hp atual ultrapassar hp_maximo<----------------------------
+-------------------------------------------->Trigger que não permite hp atual ultrapassar hp_maximo<-------------------------------------
 CREATE OR REPLACE FUNCTION HP_Check()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -46,7 +46,7 @@ AFTER UPDATE ON estado_personagem
 FOR EACH ROW
 EXECUTE FUNCTION HP_Check();
 
--------------------------------------------->Trigger que insere dados do save do personagem para status atual<----------------------------
+-------------------------------------------->Trigger que insere dados do save do personagem para status atual<---------------------------
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -61,7 +61,7 @@ AFTER INSERT ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
 
----
+-------------------------------------------->Trigger que ajusta a quantidade de estus atual do personagem<-------------------------------
 CREATE OR REPLACE FUNCTION Calc_Estus()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -79,7 +79,7 @@ EXECUTE FUNCTION Calc_Estus();
 
 
 
--------------------------------------------->Função de criar personagem<----------------------------
+-------------------------------------------->Função de criar personagem<-----------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Criar_Personagem(nome_personagem VARCHAR, classe VARCHAR)
 RETURNS VARCHAR AS $$
 BEGIN
