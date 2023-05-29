@@ -225,19 +225,32 @@ BEGIN
     FROM personagens
     WHERE nome = nome_personagem;
 
-    IF almas_atual >= POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895 THEN
+    IF almas_atual >= 673 + (17 * lv_atual) AND lv_atual < 12 THEN
         UPDATE personagens
-        SET almas = almas - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
-        	nivel = nivel + 1
-        WHERE nome = nome_personagem;	
-            
+        SET almas = almas_atual - (673 + (17 * lv_atual)),
+            nivel = nivel + 1
+        WHERE nome = nome_personagem;    
+        
         IF atributo = 'int' THEN
             UPDATE personagens
             SET "int" = "int" + 1
             WHERE nome = nome_personagem;
+        -- Add additional IF statements for other attributes
         END IF;
 
-        -- Fazer update com o resto
+        RETURN 'Subiu de nível.';
+    ELSIF almas_atual >= POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895 THEN
+        UPDATE personagens
+        SET almas = almas_atual - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
+            nivel = nivel + 1
+        WHERE nome = nome_personagem;
+        
+        IF atributo = 'int' THEN
+            UPDATE personagens
+            SET "int" = "int" + 1
+            WHERE nome = nome_personagem;
+        -- Add additional IF statements for other attributes
+        END IF;
 
         RETURN 'Subiu de nível.';
     ELSE
@@ -245,3 +258,4 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE plpgsql;
+
