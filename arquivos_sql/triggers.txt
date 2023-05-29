@@ -528,15 +528,40 @@ AFTER DELETE ON equipa
 FOR EACH ROW
 EXECUTE FUNCTION Att_Poise_Delete();
 
--------------------------------------------->Função equipar item<------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION Equipa_Item(nome VARCHAR, item VARCHAR, slot VARCHAR)
+-------------------------------------------->Função de manipular inventário do personagem<-----------------------------------------------
+CREATE OR REPLACE FUNCTION Manipular_Inventario(acao VARCHAR, nome VARCHAR, item VARCHAR, slot VARCHAR)
 RETURNS VARCHAR AS $$
+DECLARE
+    qtd_item INT;
 BEGIN
-    INSERT into equipa (nome_item,nome_personagem,slot)
-    VALUES
-    (item, nome, slot);
-    
-    RETURN 'Item equipado com sucesso.';
+    IF acao = 'equipar' THEN
+        INSERT INTO equipa (nome_item, nome_personagem, slot)
+        VALUES (item, nome, slot);
+        
+        RETURN 'Item equipado com sucesso.';
+    ELSIF acao = 'desequipar' THEN
+        DELETE FROM equipa
+        WHERE nome_personagem = nome AND nome_item = item AND equipa.slot = slot;
+        
+        RETURN 'Item desequipado com sucesso.';
+    ELSIF acao = 'descartar' THEN
+        SELECT quantidade INTO qtd_item
+        FROM inventario
+        WHERE nome_personagem = nome AND nome_item = item;
+        
+        IF qtd_item > 1 THEN
+            UPDATE inventario
+            SET quantidade = quantidade - 1
+            WHERE nome_personagem = nome AND nome_item = item;
+        ELSE
+            DELETE FROM inventario
+            WHERE nome_personagem = nome AND nome_item = item;
+        END IF;
+        
+        RETURN 'Item removido do inventário.';
+    ELSE
+        RETURN 'Ação inválida.';
+    END IF;
 END;
 $$ LANGUAGE plpgsql;
 
