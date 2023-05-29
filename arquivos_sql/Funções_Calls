@@ -1,0 +1,1 @@
+SELECT Criar_Personagem('nome', 'classe');
