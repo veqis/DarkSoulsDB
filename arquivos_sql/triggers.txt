@@ -153,14 +153,7 @@ $$ LANGUAGE plpgsql;
 -------------------------------------------->Trigger que autocalcula status dos personagens<---------------------------------------------
 CREATE OR REPLACE FUNCTION Calcular_Status()
 RETURNS TRIGGER AS $$
-DECLARE
-    soma_poise INT;
 BEGIN
-    SELECT SUM(a.poise) INTO soma_poise
-    FROM armaduras a
-    JOIN equipa e ON a.nome_armadura = e.nome_item
-    WHERE e.nome_personagem = new.nome;
-
     UPDATE personagens
     SET hp = 300 + (vit * 50),
         stamina = 90 + (endu * 2),
@@ -170,7 +163,7 @@ BEGIN
         bleed_res = 30 + endu,
         poison_res = 30 + res,
         curse_res = 30 + hum,
-        poise = 0 + soma_poise
+        poise = 0
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = NEW.nome) > 160) THEN
