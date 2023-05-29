@@ -1157,12 +1157,12 @@ SELECT Criar_Personagem('Knight Solaire', 'Knight');
 SELECT Criar_Personagem('Thief', 'Thief');
 SELECT Criar_Personagem('Cleric', 'Cleric');
 
-SELECT manipular_inventario ('equipar',nome_personagem,'Knight Armor','peitoral');
-SELECT manipular_inventario ('equipar',nome_personagem,'Knight Gauntlets','luvas');
-SELECT manipular_inventario ('equipar',nome_personagem,'Knight Helm','capacete');
-SELECT manipular_inventario ('equipar',nome_personagem,'Knight Leggings','botas');
-SELECT manipular_inventario ('equipar',nome_personagem,'Broadsword','m_esquerda_1');
-SELECT manipular_inventario ('equipar',nome_personagem,'Caduceus Kite Shield','m_direita_1');
+SELECT manipular_inventario ('equipar','Knight Solaire','Knight Armor','peitoral');
+SELECT manipular_inventario ('equipar','Knight Solaire','Knight Gauntlets','luvas');
+SELECT manipular_inventario ('equipar','Knight Solaire','Knight Helm','capacete');
+SELECT manipular_inventario ('equipar','Knight Solaire','Knight Leggings','botas');
+SELECT manipular_inventario ('equipar','Knight Solaire','Broadsword','m_esquerda_1');
+SELECT manipular_inventario ('equipar','Knight Solaire','Caduceus Kite Shield','m_direita_1');
 
 INSERT INTO dropa (nome_entidade,nome_item,chance) 
 VALUES
