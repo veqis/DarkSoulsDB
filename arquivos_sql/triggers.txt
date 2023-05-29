@@ -364,3 +364,36 @@ BEGIN
     RETURN 'Você morreu.';
 END;
 $$ LANGUAGE plpgsql;
+
+-------------------------------------------->Função de Recuperar copo de personagem morto<-----------------------------------------------
+CREATE OR REPLACE FUNCTION Recuperar_Corpo(nome VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE 
+    almas_curr INT;
+    almas_max INT;
+    hum_curr INT;
+    hum_max INT;
+BEGIN
+    SELECT almas, hum INTO almas_max, hum_max
+    FROM personagens
+    WHERE personagens.nome = Recuperar_Corpo.nome;
+    
+    SELECT almas_atual, hum_atual INTO almas_curr, hum_curr
+    FROM estado_personagem
+    WHERE nome_personagem = Recuperar_Corpo.nome;
+    
+    IF almas_curr != almas_max OR hum_curr != hum_max THEN
+        UPDATE estado_personagem
+        SET almas_atual = almas_max,
+            hum_atual = hum_max
+        WHERE nome_personagem = Recuperar_Corpo.nome;
+    
+    ELSIF almas_curr = almas_max OR hum_curr = hum_max THEN
+        RETURN 'Não há corpo para recuperar';
+    END IF;
+    
+    RETURN 'Corpo Recuperado.';
+END;
+$$ LANGUAGE plpgsql;
+
+-------------------------------------------->
