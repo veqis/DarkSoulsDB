@@ -719,7 +719,8 @@ VALUES
 ('Spear', 'Spear', 'Thrust', '80', '0', '0', '0', '100', '40.0', '10.0', '30.0', '30.0', '26', '180', '3.5', 'D', 'C', '-', '-', '11', '10', '0', '0'),
 ('Spider Shield', 'Medium Shield', 'Strike', '62', '0', '0', '0', '100', '100', '30', '72', '48', '56', '230', '3.0', 'D', '-', '-', '-', '10', '0', '0', '0'),
 ('Spiked Shield', 'Medium Shield', 'Strike', '78', '0', '0', '0', '100', '90', '28', '69', '40', '48', '160', '3.0', 'D', 'C', '-', '-', '10', '12', '0', '0'),
-('Stone Greataxe', 'Greataxe', 'Regular', '190', '0', '0', '0', '100', '55', '10', '40', '40', '38', '700', '24.0', 'B', 'E', '-', '-', '48', '10', '0', '0');
+('Stone Greataxe', 'Greataxe', 'Regular', '190', '0', '0', '0', '100', '55', '10', '40', '40', '38', '700', '24.0', 'B', 'E', '-', '-', '48', '10', '0', '0'),
+('Pyromancy Flame', 'Flame', 'Strike', '0', '0', '0', '0', '0', '0.0', '0.0', '0.0', '0.0', '0', '0', '0.0', '-', '-', '-', '-', '0', '0', '0', '0');
 
 INSERT INTO armaduras (nome_armadura,tipo_armadura,r_fis,r_impacto,r_corte,r_perfurar,r_magic,r_fogo,r_electro,r_bleed,r_poison,r_curse,durabilidade,peso,poise) 
 VALUES
