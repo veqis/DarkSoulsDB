@@ -214,7 +214,6 @@ WHEN (pg_trigger_depth() < 1)
 EXECUTE FUNCTION Calcular_Status();
 
 -------------------------------------------->Função de Level-UP<-------------------------------------------------------------------------
-
 CREATE OR REPLACE FUNCTION Level_UP(nome_personagem VARCHAR, atributo VARCHAR)
 RETURNS VARCHAR AS $$
 DECLARE 
@@ -224,106 +223,111 @@ BEGIN
     SELECT nivel, almas INTO lv_atual, almas_atual
     FROM personagens
     WHERE nome = nome_personagem;
+    
+    IF atributo = 'vit' OR atributo = 'att' OR atributo = 'endu' OR atributo = 'str' OR atributo = 'dex' OR atributo = 'res' OR atributo = 'int' OR atributo = 'fth' THEN
+        IF almas_atual >= 673 + (17 * lv_atual) AND lv_atual < 12 THEN
+            UPDATE personagens
+            SET almas = almas_atual - (673 + (17 * lv_atual)),
+                nivel = nivel + 1
+            WHERE nome = nome_personagem;    
 
-    IF almas_atual >= 673 + (17 * lv_atual) AND lv_atual < 12 THEN
-        UPDATE personagens
-        SET almas = almas_atual - (673 + (17 * lv_atual)),
-            nivel = nivel + 1
-        WHERE nome = nome_personagem;    
-        
-        IF atributo = 'vit' THEN
-            UPDATE personagens
-            SET "vit" = "vit" + 1
-            WHERE nome = nome_personagem;        
-        
-        ELSIF atributo = 'att' THEN
-            UPDATE personagens
-            SET "att" = "att" + 1
-            WHERE nome = nome_personagem;        
+            IF atributo = 'vit' THEN
+                UPDATE personagens
+                SET "vit" = "vit" + 1
+                WHERE nome = nome_personagem;        
 
-        ELSIF atributo = 'endu' THEN
-            UPDATE personagens
-            SET "endu" = "endu" + 1
-            WHERE nome = nome_personagem;
+            ELSIF atributo = 'att' THEN
+                UPDATE personagens
+                SET "att" = "att" + 1
+                WHERE nome = nome_personagem;        
 
-        ELSIF atributo = 'str' THEN
-            UPDATE personagens
-            SET "srt" = "str" + 1
-            WHERE nome = nome_personagem;
+            ELSIF atributo = 'endu' THEN
+                UPDATE personagens
+                SET "endu" = "endu" + 1
+                WHERE nome = nome_personagem;
 
-        ELSIF atributo = 'dex' THEN
-            UPDATE personagens
-            SET "dex" = "dex" + 1
-            WHERE nome = nome_personagem;
+            ELSIF atributo = 'str' THEN
+                UPDATE personagens
+                SET "str" = "str" + 1
+                WHERE nome = nome_personagem;
 
-        ELSIF atributo = 'res' THEN
-            UPDATE personagens
-            SET "res" = "res" + 1
-            WHERE nome = nome_personagem;
+            ELSIF atributo = 'dex' THEN
+                UPDATE personagens
+                SET "dex" = "dex" + 1
+                WHERE nome = nome_personagem;
 
-        ELSIF atributo = 'int' THEN
+            ELSIF atributo = 'res' THEN
+                UPDATE personagens
+                SET "res" = "res" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'int' THEN
+                UPDATE personagens
+                SET "int" = "int" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'fth' THEN
+                UPDATE personagens
+                SET "fth" = "fth" + 1
+                WHERE nome = nome_personagem;
+
+            END IF;
+
+            RETURN 'Subiu de nível.';
+        ELSIF almas_atual >= POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895 THEN
             UPDATE personagens
-            SET "int" = "int" + 1
-            WHERE nome = nome_personagem;
-            
-        ELSIF atributo = 'fth' THEN
-            UPDATE personagens
-            SET "fth" = "fth" + 1
-            WHERE nome = nome_personagem;              
+            SET almas = almas_atual - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
+                nivel = nivel + 1
+            WHERE nome = nome_personagem;    
+
+            IF atributo = 'vit' THEN
+                UPDATE personagens
+                SET "vit" = "vit" + 1
+                WHERE nome = nome_personagem;        
+
+            ELSIF atributo = 'att' THEN
+                UPDATE personagens
+                SET "att" = "att" + 1
+                WHERE nome = nome_personagem;        
+
+            ELSIF atributo = 'endu' THEN
+                UPDATE personagens
+                SET "endu" = "endu" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'str' THEN
+                UPDATE personagens
+                SET "str" = "str" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'dex' THEN
+                UPDATE personagens
+                SET "dex" = "dex" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'res' THEN
+                UPDATE personagens
+                SET "res" = "res" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'int' THEN
+                UPDATE personagens
+                SET "int" = "int" + 1
+                WHERE nome = nome_personagem;
+
+            ELSIF atributo = 'fth' THEN
+                UPDATE personagens
+                SET "fth" = "fth" + 1
+                WHERE nome = nome_personagem;
+
+            END IF;
+
+            RETURN 'Subiu de nível.';
+        ELSE
+            RETURN 'Almas insuficientes para subir de nível.';
         END IF;
-
-        RETURN 'Subiu de nível.';
-    ELSIF almas_atual >= POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895 THEN
-        UPDATE personagens
-        SET almas = almas_atual - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
-            nivel = nivel + 1
-        WHERE nome = nome_personagem;    
-        
-        IF atributo = 'vit' THEN
-            UPDATE personagens
-            SET "vit" = "vit" + 1
-            WHERE nome = nome_personagem;        
-        
-        ELSIF atributo = 'att' THEN
-            UPDATE personagens
-            SET "att" = "att" + 1
-            WHERE nome = nome_personagem;        
-
-        ELSIF atributo = 'endu' THEN
-            UPDATE personagens
-            SET "endu" = "endu" + 1
-            WHERE nome = nome_personagem;
-
-        ELSIF atributo = 'str' THEN
-            UPDATE personagens
-            SET "srt" = "str" + 1
-            WHERE nome = nome_personagem;
-
-        ELSIF atributo = 'dex' THEN
-            UPDATE personagens
-            SET "dex" = "dex" + 1
-            WHERE nome = nome_personagem;
-
-        ELSIF atributo = 'res' THEN
-            UPDATE personagens
-            SET "res" = "res" + 1
-            WHERE nome = nome_personagem;
-
-        ELSIF atributo = 'int' THEN
-            UPDATE personagens
-            SET "int" = "int" + 1
-            WHERE nome = nome_personagem;
-            
-        ELSIF atributo = 'fth' THEN
-            UPDATE personagens
-            SET "fth" = "fth" + 1
-            WHERE nome = nome_personagem;              
-        END IF;
-
-        RETURN 'Subiu de nível.';
     ELSE
-        RETURN 'Almas insuficientes para subir de nível.';
+        RETURN 'Atributo inválido.';
     END IF;
 END;
 $$ LANGUAGE plpgsql;
-
