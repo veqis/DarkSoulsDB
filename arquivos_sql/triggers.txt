@@ -231,11 +231,45 @@ BEGIN
             nivel = nivel + 1
         WHERE nome = nome_personagem;    
         
-        IF atributo = 'int' THEN
+        IF atributo = 'vit' THEN
+            UPDATE personagens
+            SET "vit" = "vit" + 1
+            WHERE nome = nome_personagem;        
+        
+        ELSIF atributo = 'att' THEN
+            UPDATE personagens
+            SET "att" = "att" + 1
+            WHERE nome = nome_personagem;        
+
+        ELSIF atributo = 'endu' THEN
+            UPDATE personagens
+            SET "endu" = "endu" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'str' THEN
+            UPDATE personagens
+            SET "srt" = "str" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'dex' THEN
+            UPDATE personagens
+            SET "dex" = "dex" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'res' THEN
+            UPDATE personagens
+            SET "res" = "res" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'int' THEN
             UPDATE personagens
             SET "int" = "int" + 1
             WHERE nome = nome_personagem;
-        -- Add additional IF statements for other attributes
+            
+        ELSIF atributo = 'fth' THEN
+            UPDATE personagens
+            SET "fth" = "fth" + 1
+            WHERE nome = nome_personagem;              
         END IF;
 
         RETURN 'Subiu de nível.';
@@ -243,13 +277,47 @@ BEGIN
         UPDATE personagens
         SET almas = almas_atual - (POWER((0.02 * lv_atual), 3) + POWER((3.06 * lv_atual), 2) + 105.6 * lv_atual - 895),
             nivel = nivel + 1
-        WHERE nome = nome_personagem;
+        WHERE nome = nome_personagem;    
         
-        IF atributo = 'int' THEN
+        IF atributo = 'vit' THEN
+            UPDATE personagens
+            SET "vit" = "vit" + 1
+            WHERE nome = nome_personagem;        
+        
+        ELSIF atributo = 'att' THEN
+            UPDATE personagens
+            SET "att" = "att" + 1
+            WHERE nome = nome_personagem;        
+
+        ELSIF atributo = 'endu' THEN
+            UPDATE personagens
+            SET "endu" = "endu" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'str' THEN
+            UPDATE personagens
+            SET "srt" = "str" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'dex' THEN
+            UPDATE personagens
+            SET "dex" = "dex" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'res' THEN
+            UPDATE personagens
+            SET "res" = "res" + 1
+            WHERE nome = nome_personagem;
+
+        ELSIF atributo = 'int' THEN
             UPDATE personagens
             SET "int" = "int" + 1
             WHERE nome = nome_personagem;
-        -- Add additional IF statements for other attributes
+            
+        ELSIF atributo = 'fth' THEN
+            UPDATE personagens
+            SET "fth" = "fth" + 1
+            WHERE nome = nome_personagem;              
         END IF;
 
         RETURN 'Subiu de nível.';
