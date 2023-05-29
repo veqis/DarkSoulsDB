@@ -50,8 +50,16 @@ EXECUTE FUNCTION HP_Check();
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
 BEGIN
-	INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual, estus_atual)
-	VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum, 0);
+	IF NOT EXISTS (SELECT 1 FROM estado_personagem WHERE nome_personagem = NEW.nome) THEN
+		INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual, estus_atual)
+		VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum, 0);
+    ELSE
+        UPDATE estado_personagem
+        SET hp_atual = (SELECT hp FROM personagens WHERE nome = NEW.nome),
+        	almas_atual = (SELECT almas FROM personagens WHERE nome = NEW.nome),
+            hum_atual = (SELECT hum FROM personagens WHERE nome = NEW.nome)
+        WHERE nome_personagem = NEW.nome;    	
+	END IF;
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
