@@ -162,8 +162,7 @@ BEGIN
         attunment_slot = (att / 5),
         bleed_res = 30 + endu,
         poison_res = 30 + res,
-        curse_res = 30 + hum,
-        poise = 0
+        curse_res = 30 + hum
     WHERE nome = NEW.nome;
 
     IF ( (SELECT stamina FROM personagens WHERE nome = NEW.nome) > 160) THEN
@@ -389,4 +388,27 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--------------------------------------------->
+-------------------------------------------->Trigger autocalcular_poise perosnagem<------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION Calcular_Poise()
+RETURNS TRIGGER AS $$
+DECLARE
+    soma_poise INT;
+BEGIN
+    SELECT SUM(a.poise) INTO soma_poise
+    FROM armaduras a
+    JOIN equipa e ON a.nome_armadura = e.nome_item
+    WHERE e.nome_personagem = NEW.nome_personagem;
+
+    UPDATE personagens
+    SET poise = soma_poise
+    WHERE nome = NEW.nome_personagem;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER Att_Poise
+AFTER INSERT OR UPDATE ON equipa
+FOR EACH ROW
+EXECUTE FUNCTION Calcular_Poise();
