@@ -95,50 +95,141 @@ BEGIN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 50, 100, 0, 48, 36, 30, 0, 4, 11, 8, 12, 13, 13, 11, 9, 9, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Longsword', nome_personagem,'1'),
+        ('Heater Shield', nome_personagem,'1'),
+        ('Iron Helm', nome_personagem, '1'),
+        ('Hard Leather Armor', nome_personagem, '1'),
+        ('Hard Leather Gauntlets', nome_personagem, '1'),
+        ('Hard Leather Boots', nome_personagem, '1');
+        
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Knight' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 40, 30, 30, 0, 5, 14, 10, 10, 11, 11, 10, 9, 11, 0);
+        
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Broadsword', nome_personagem,'1'),
+        ('Caduceus Kite Shield', nome_personagem,'1'),
+        ('Knight Helm', nome_personagem, '1'),
+        ('Knight Armor', nome_personagem, '1'),
+        ('Knight Gauntlets', nome_personagem, '1'),
+        ('Knight Leggings', nome_personagem, '1');        
         
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Wanderer' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 40, 42, 30, 0, 3, 10, 11, 10, 10, 14, 12, 11, 8, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Scimitar', nome_personagem,'1'),
+        ('Leather Shield', nome_personagem,'1'),
+        ('Brigand Hood', nome_personagem, '1'),
+        ('Brigand Armor', nome_personagem, '1'),
+        ('Brigand Gauntlets', nome_personagem, '1'),
+        ('Brigand Trousers', nome_personagem, '1');          
+        
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Thief' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 37, 30, 30, 0, 5, 9, 11, 9, 9, 15, 10, 12, 11, 0);
+        
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Bandit''s Knife', nome_personagem,'1'),
+        ('Iron Round Shield', nome_personagem,'1'),
+        ('Dark Mask', nome_personagem, '1'),
+        ('Black Leather Armor', nome_personagem, '1'),
+        ('Black Leather Gloves', nome_personagem, '1'),
+        ('Black Leather Boots', nome_personagem, '1');          
         
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Bandit' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 56, 36, 36, 0, 4, 12, 8, 14, 14, 9, 11, 8, 10, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Battle Axe', nome_personagem,'1'),
+        ('Spider Shield', nome_personagem,'1'),
+        ('Brigand Hood', nome_personagem, '1'),
+        ('Brigand Armor', nome_personagem, '1'),
+        ('Brigand Gauntlets', nome_personagem, '1'),
+        ('Brigand Trousers', nome_personagem, '1');          
+        
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Hunter' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 36, 30, 0, 4, 11, 9, 11, 12, 14, 11, 9, 9, 0);
+        
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Shortsword', nome_personagem,'1'),
+        ('Short Bow', nome_personagem,'1'),
+        ('Large Leather Shield', nome_personagem, '1'),
+        ('Leather Armor', nome_personagem, '1'),
+        ('Leather Gloves', nome_personagem, '1'),
+        ('Leather Boots', nome_personagem, '1');         
         
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Sorcerer' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 33, 26, 30, 0, 3, 8, 15, 8, 9, 11, 8, 15, 8, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES 
+        ('Dagger', nome_personagem,'1'),
+        ('Small Leather Shield', nome_personagem,'1'),
+        ('Sorcerer''s Catalyst', nome_personagem, '1'),
+        ('Black Sorcerer Hat', nome_personagem, '1'),
+        ('Black Sorcerer Cloak', nome_personagem, '1'),
+        ('Black Sorcerer Gauntlets', nome_personagem, '1'),
+        ('Black Sorcerer Boots', nome_personagem, '1'),
+        ('Soul Arrow', nome_personagem, '1');
+        
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Pyromancer' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 42, 30, 0, 1, 10, 12, 11, 12, 9, 12, 10, 8, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES        
+        ('Hand Axe', nome_personagem, '1'),
+        ('Cracked Round Shield', nome_personagem, '1'),
+        ('Pyromancy Flame', nome_personagem, '1'),
+        ('Dingy Hood', nome_personagem, '1'),
+        ('Dingy Robe', nome_personagem, '1'),
+        ('Dingy Gloves', nome_personagem, '1'),
+        ('Heavy Boots', nome_personagem, '1'),
+        ('Fireball', nome_personagem, '1');
+
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Cleric' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 37, 36, 30, 0, 2, 11, 11, 9, 12, 8, 11, 8, 14, 0);
         
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES        
+        ('Mace', nome_personagem, '1'),
+        ('East-West Shield', nome_personagem, '1'),
+        ('Canvas Talisman', nome_personagem, '1'),
+        ('Holy Robe', nome_personagem, '1'),
+        ('Holy Trousers', nome_personagem, '1'),
+        ('Heal', nome_personagem, '1'),
+        ('Leather Gloves', nome_personagem, '1');        
+        
         RETURN 'Personagem criado com sucesso.';
     ELSIF classe = 'Deprived' THEN
         INSERT INTO personagens (nome, classe, almas, hp, stamina, equip_load, item_discovery, attunment_slot, bleed_res, poison_res, curse_res, poise, nivel, vit, att, endu, str, dex, res, int, fth, hum)
         VALUES (nome_personagem, classe, 0, 400, 90, 0, 100, 0, 44, 36, 30, 0, 6, 11, 11, 11, 11, 11, 11, 11, 11, 0);
+        
+        INSERT INTO inventario (nome_item,nome_personagem,quantidade) 
+		VALUES        
+        ('Club', nome_personagem, '1'),
+        ('Plank Shield', nome_personagem, '1');
         
         RETURN 'Personagem criado com sucesso.';
     ELSE
@@ -146,9 +237,6 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE plpgsql;
-
------SELECT Criar_Personagem('jose', 'Deprived');
------Adicionar os itens das classes
 
 -------------------------------------------->Trigger que autocalcula status dos personagens<---------------------------------------------
 CREATE OR REPLACE FUNCTION Calcular_Status()
