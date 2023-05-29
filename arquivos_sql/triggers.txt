@@ -478,7 +478,8 @@ $$ LANGUAGE plpgsql;
 
 -------------------------------------------->Trigger autocalcular_poise perosnagem<------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION Calcular_Poise()
+-- Trigger para INSERT e UPDATE
+CREATE OR REPLACE FUNCTION Att_Poise()
 RETURNS TRIGGER AS $$
 DECLARE
     soma_poise INT;
@@ -496,10 +497,36 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER Att_Poise
+-- Trigger para DELETE
+CREATE OR REPLACE FUNCTION Att_Poise_Delete()
+RETURNS TRIGGER AS $$
+DECLARE
+    soma_poise INT;
+BEGIN
+    SELECT SUM(a.poise) INTO soma_poise
+    FROM armaduras a
+    JOIN equipa e ON a.nome_armadura = e.nome_item
+    WHERE e.nome_personagem = OLD.nome_personagem;
+
+    UPDATE personagens
+    SET poise = soma_poise
+    WHERE nome = OLD.nome_personagem;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para INSERT e UPDATE
+CREATE TRIGGER Att_Poise
 AFTER INSERT OR UPDATE ON equipa
 FOR EACH ROW
-EXECUTE FUNCTION Calcular_Poise();
+EXECUTE FUNCTION Att_Poise();
+
+-- Trigger para DELETE
+CREATE TRIGGER Att_Poise_Delete
+AFTER DELETE ON equipa
+FOR EACH ROW
+EXECUTE FUNCTION Att_Poise_Delete();
 
 -------------------------------------------->Função equipar item<------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Equipa_Item(nome VARCHAR, item VARCHAR, slot VARCHAR)
