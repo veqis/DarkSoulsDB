@@ -1,1 +1,14 @@
-SELECT Criar_Personagem('nome', 'classe');
+---1º nome_personagem
+---2º classe
+SELECT Criar_Personagem('', '');
+
+---------------------------------------
+
+---1º ação (equipar/desequipar/descartar)
+---2º nome_personagem
+---3º item
+---4º slot (opcional_para_descartar)
+SELECT manipular_inventario ('','','','');
+
+-----------------------------------------
+
