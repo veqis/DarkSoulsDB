@@ -331,3 +331,36 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE plpgsql;
+-------------------------------------------->Função de Personagem morreu<----------------------------------------------------------------
+CREATE OR REPLACE FUNCTION Personagem_Morre(nome VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE 
+    almas_curr INT;
+    almas_max INT;
+    hum_curr INT;
+    hum_max INT;
+BEGIN
+    SELECT almas, hum INTO almas_max, hum_max
+    FROM personagens
+    WHERE personagens.nome = Personagem_Morre.nome;
+    
+    SELECT almas_atual, hum_atual INTO almas_curr, hum_curr
+    FROM estado_personagem
+    WHERE nome_personagem = Personagem_Morre.nome;
+    
+    IF almas_curr = almas_max AND hum_curr = hum_max THEN
+        UPDATE estado_personagem
+        SET almas_atual = 0,
+            hum_atual = 0
+        WHERE nome_personagem = Personagem_Morre.nome;
+    
+    ELSIF almas_curr != almas_max OR hum_curr != hum_max THEN
+        UPDATE personagens
+        SET almas = almas_curr,
+            hum = hum_curr
+        WHERE personagens.nome = Personagem_Morre.nome;
+    END IF;
+    
+    RETURN 'Você morreu.';
+END;
+$$ LANGUAGE plpgsql;
