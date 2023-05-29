@@ -10,7 +10,7 @@ BEGIN
     
     IF estus_disponivel > 0 THEN
         UPDATE estado_personagem 
-        SET hp_atual = hp_atual + 10,
+        SET hp_atual = hp_atual + 300,
             estus_atual = estus_atual - 1
         WHERE estado_personagem.nome_personagem = cura_personagem.nome_personagem;
         
