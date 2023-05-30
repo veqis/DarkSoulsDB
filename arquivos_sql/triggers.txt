@@ -568,7 +568,7 @@ $$ LANGUAGE plpgsql;
 -------------------------------------------->Função calcular dano<-----------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION Calcular_Dano (personagem VARCHAR, slot_arma VARCHAR, alvo VARCHAR)
-RETURNS VARCHAR AS $$
+RETURNS TABLE(resultado_texto TEXT) AS $$
 DECLARE
     dano_fis INT;
     dano_mag INT;
@@ -632,6 +632,8 @@ BEGIN
     FROM monstro
     WHERE nome_monstro = alvo;
 
-    RETURN 'Dano por hit: ' || total::text || E'\n' || media::text; 
+    RETURN QUERY SELECT 'Dano por hit = ' || total::text;
+    RETURN QUERY SELECT 'Média de ataques para derrotar = ' || media::text;
 END;
 $$ LANGUAGE plpgsql;
+
