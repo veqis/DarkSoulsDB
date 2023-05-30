@@ -15,3 +15,6 @@ SELECT manipular_inventario ('','','','');
 
 ---------------------------------------
 
+---formula de percentagem drop
+
+P(Item)=(ID*p(Item))/(ID*sum_i(p(Item*i)) + 100*p(NoDrop) )
