@@ -565,4 +565,40 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--------------------------------------------->
+-------------------------------------------->Função calcular dano<-----------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION Calcular_Dano (personagem VARCHAR, slot_arma VARCHAR, alvo VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE
+    dano_fis INT;
+    dano_mag INT;
+    dano_fog INT;
+    dano_ele INT;
+    r_fis_monstro INT;
+    r_mag_monstro INT;
+    r_fog_monstro INT;
+    r_ele_monstro INT;
+    dano INT;
+BEGIN
+    SELECT fis, magi, fire, eletro INTO dano_fis, dano_mag, dano_fog, dano_ele
+    FROM equipamentos a
+    JOIN equipa e ON a.nome_equipamento = e.nome_item
+    WHERE slot_arma = slot;
+    
+    SELECT r_fis, r_magic, r_fogo, r_electro INTO r_fis_monstro, r_mag_monstro, r_fog_monstro, r_ele_monstro
+    FROM monstro
+    WHERE nome_monstro = alvo;
+
+    
+    IF dano_fis > r_fis_monstro THEN
+    	SELECT (dano_fis - 0.79 * r_fis_monstro * POWER(2.71828, (-0.27 * (r_fis_monstro / dano_fis) ) ) ) INTO dano;
+        
+        RETURN 'Dano físico: ' || dano_fis::text;
+    ELSE
+        SELECT (0.4 * (POWER(dano_fis, 3) / (POWER(r_fis_monstro, 2)) - 0.09 * (POWER(dano_fis, 2) / r_fis_monstro) + 0.1 * dano_fis)) INTO dano;
+        
+        RETURN 'Dano reduzido: ' || dano::text;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
