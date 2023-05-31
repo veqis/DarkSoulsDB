@@ -675,6 +675,16 @@ BEGIN
             personagem_nome := personagem;
             alvo_nome := alvo_row.nome_item;
             resultado := 'Dropou';
+
+            IF NOT EXISTS (SELECT 1 FROM inventario WHERE alvo_row.nome_item = inventario.nome_item) THEN
+                INSERT INTO inventario (nome_item, nome_personagem, quantidade)
+                VALUES (alvo_row.nome_item, personagem, 1);
+            ELSE
+                UPDATE inventario
+                  SET quantidade = quantidade + 1
+                WHERE nome_personagem = personagem AND alvo_row.nome_item = nome_item;    	
+            END IF;            
+            
         ELSE
             personagem_nome := personagem;
             alvo_nome := alvo_row.nome_item;
@@ -687,5 +697,3 @@ BEGIN
     RETURN;
 END;
 $$ LANGUAGE plpgsql;
-
-
