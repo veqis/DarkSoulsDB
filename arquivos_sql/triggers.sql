@@ -637,7 +637,7 @@ $$ LANGUAGE plpgsql;
 
 -------------------------------------------->Função gerar numeros em um range<-----------------------------------------------------------------------
 
-----------------------ESSA FUNÇÃO NÃO FOI CRIADA POR MIM
+
 ----------------------https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-random-range/
 
 CREATE OR REPLACE FUNCTION random_between(low INT ,high INT) 
