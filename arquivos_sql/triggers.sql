@@ -46,7 +46,7 @@ AFTER UPDATE ON estado_personagem
 FOR EACH ROW
 EXECUTE FUNCTION HP_Check();
 
--------------------------------------------->Trigger que ajusta a quantidade de estus atual do personagem--
+-------------------------------------------->Trigger que ajusta a quantidade de estus atual do personagem
 CREATE OR REPLACE FUNCTION Calc_Estus()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -61,30 +61,6 @@ CREATE TRIGGER Estus_UPDT
 AFTER INSERT ON respawn
 FOR EACH ROW
 EXECUTE FUNCTION Calc_Estus();
-
-
--------------------------------------------->Trigger que insere dados do save do personagem para status atual<---------------------------
-CREATE OR REPLACE FUNCTION Novo_Personagem()
-RETURNS TRIGGER AS $$
-BEGIN
-	IF NOT EXISTS (SELECT 1 FROM estado_personagem WHERE nome_personagem = NEW.nome) THEN
-		INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual, estus_atual)
-		VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum, 0);
-    ELSE
-        UPDATE estado_personagem
-        SET hp_atual = (SELECT hp FROM personagens WHERE nome = NEW.nome),
-        	almas_atual = (SELECT almas FROM personagens WHERE nome = NEW.nome),
-            hum_atual = (SELECT hum FROM personagens WHERE nome = NEW.nome)
-        WHERE nome_personagem = NEW.nome;    	
-	END IF;
-	RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE OR REPLACE TRIGGER Update_Estado_Personagem
-AFTER INSERT OR UPDATE ON personagens
-FOR EACH ROW
-EXECUTE FUNCTION Novo_Personagem();
 
 -------------------------------------------->Função de criar personagem<-----------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Criar_Personagem(nome_personagem VARCHAR, classe VARCHAR)
@@ -236,6 +212,29 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE plpgsql;
+
+-------------------------------------------->Trigger que insere dados do save do personagem para status atual
+CREATE OR REPLACE FUNCTION Novo_Personagem()
+RETURNS TRIGGER AS $$
+BEGIN
+	IF NOT EXISTS (SELECT 1 FROM estado_personagem WHERE nome_personagem = NEW.nome) THEN
+		INSERT INTO estado_personagem (nome_personagem, hp_atual, almas_atual, hum_atual, estus_atual)
+		VALUES (NEW.nome, NEW.hp, NEW.almas, NEW.hum, 0);
+    ELSE
+        UPDATE estado_personagem
+        SET hp_atual = (SELECT hp FROM personagens WHERE nome = NEW.nome),
+        	almas_atual = (SELECT almas FROM personagens WHERE nome = NEW.nome),
+            hum_atual = (SELECT hum FROM personagens WHERE nome = NEW.nome)
+        WHERE nome_personagem = NEW.nome;    	
+	END IF;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER Update_Estado_Personagem
+AFTER INSERT OR UPDATE ON personagens
+FOR EACH ROW
+EXECUTE FUNCTION Novo_Personagem();
 
 -------------------------------------------->Trigger que autocalcula status dos personagens<---------------------------------------------
 CREATE OR REPLACE FUNCTION Calcular_Status()
