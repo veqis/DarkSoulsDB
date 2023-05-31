@@ -1166,7 +1166,7 @@ SELECT manipular_inventario ('equipar','Knight Solaire','Caduceus Kite Shield','
 
 INSERT INTO dropa (nome_entidade,nome_item,chance) 
 VALUES
-('Stone Demon','Large Titanite Shard','50'),
+('Stone Demon','Titanite Shard','50'),
 ('Stone Demon','Large Titanite Shard','30'),
 ('Stone Demon','Titanite Chunk','10'); 
 
