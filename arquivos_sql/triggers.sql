@@ -652,3 +652,26 @@ $$ language 'plpgsql' STRICT;
 
 -------------------------------------------->Função para calcular drops<-----------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION Calcular_Drops (personagem VARCHAR, alvo VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE
+	item_d INT;
+    pd_item INT;
+    P_Drop INT;
+BEGIN
+	SELECT item_discovery INTO item_d
+    FROM personagens
+    WHERE nome = personagem;
+    
+    SELECT chance INTO pd_item
+    FROM dropa
+    WHERE nome_entidade = alvo;
+    
+    IF random_between(1, 100) <= pd_item * (item_d / 100) THEN
+    	RETURN 'Dropou';
+    ELSE
+        RETURN 'Nao dropou';
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
