@@ -559,7 +559,7 @@ values
 ('Sunlight Spear', 'Miracles', '5', '2', '0', '50', 'Ranged Attack'),
 ('Sunlight Blade', 'Miracles', '1', '1', '0', '30', 'Weapon Buff'),
 ('Darkmoon Blade', 'Miracles', '1', '1', '0', '30', 'Weapon Buff'),
-('Gravelord Sword Dance', 'Miracles', '40', '1', '0', '0', 'AoE Attack')
+('Gravelord Sword Dance', 'Miracles', '40', '1', '0', '0', 'AoE Attack'),
 ('Gravelord Greatsword Dance', 'Miracles', '40', '1', '0', '0', 'AoE Attack'),
 ('Escape Death', 'Miracles', '1', '1', '0', '0', 'Support');
 
