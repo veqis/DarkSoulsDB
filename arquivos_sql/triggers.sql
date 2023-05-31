@@ -21,7 +21,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--------------------------------------------->Trigger que não permite hp atual ultrapassar hp_maximo<-------------------------------------
+-------------------------------------------->Trigger que não permite hp atual ultrapassar hp_maximo
 CREATE OR REPLACE FUNCTION HP_Check()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -46,6 +46,23 @@ AFTER UPDATE ON estado_personagem
 FOR EACH ROW
 EXECUTE FUNCTION HP_Check();
 
+-------------------------------------------->Trigger que ajusta a quantidade de estus atual do personagem--
+CREATE OR REPLACE FUNCTION Calc_Estus()
+RETURNS TRIGGER AS $$
+BEGIN
+	UPDATE estado_personagem
+	SET estus_atual = (SELECT nivel_bonefire FROM respawn WHERE nome_personagem = NEW.nome_personagem) * 5
+	WHERE nome_personagem = NEW.nome_personagem;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER Estus_UPDT
+AFTER INSERT ON respawn
+FOR EACH ROW
+EXECUTE FUNCTION Calc_Estus();
+
+
 -------------------------------------------->Trigger que insere dados do save do personagem para status atual<---------------------------
 CREATE OR REPLACE FUNCTION Novo_Personagem()
 RETURNS TRIGGER AS $$
@@ -68,24 +85,6 @@ CREATE OR REPLACE TRIGGER Update_Estado_Personagem
 AFTER INSERT OR UPDATE ON personagens
 FOR EACH ROW
 EXECUTE FUNCTION Novo_Personagem();
-
--------------------------------------------->Trigger que ajusta a quantidade de estus atual do personagem<-------------------------------
-CREATE OR REPLACE FUNCTION Calc_Estus()
-RETURNS TRIGGER AS $$
-BEGIN
-	UPDATE estado_personagem
-	SET estus_atual = (SELECT nivel_bonefire FROM respawn WHERE nome_personagem = NEW.nome_personagem) * 5
-	WHERE nome_personagem = NEW.nome_personagem;
-	RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE TRIGGER Estus_UPDT
-AFTER INSERT ON respawn
-FOR EACH ROW
-EXECUTE FUNCTION Calc_Estus();
-
-
 
 -------------------------------------------->Função de criar personagem<-----------------------------------------------------------------
 CREATE OR REPLACE FUNCTION Criar_Personagem(nome_personagem VARCHAR, classe VARCHAR)
